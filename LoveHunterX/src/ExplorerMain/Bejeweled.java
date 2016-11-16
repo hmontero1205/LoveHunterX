@@ -14,7 +14,7 @@ public class Bejeweled {
 //		printPic(arr2d);
 		System.out.println("swapping");
 		swap(arr2d,0,2,"a");
-		
+		// wdf
 		
 	}
 	public static void setGame(){
