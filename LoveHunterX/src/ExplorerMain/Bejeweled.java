@@ -83,4 +83,34 @@ public class Bejeweled {
 		
 		
 	}
+	
+	public static boolean CheckRow(String[] row){
+    	int longest = 1;
+    	int temp = 1;
+    	for(int i = 0;i<row.length;i++){
+    		int index = i;
+    		while(index<row.length-1&&row[index] == row[index+1]){
+    			
+    			temp++;
+    			index++;
+    		}
+    		i = index;
+    		if(longest<temp){
+    			longest = temp;
+    		}
+    		temp = 1;
+    		
+    		
+    		
+    	}
+
+        if (longest>=4)
+        	return true;
+		
+		
+		return false;
+		
+	}
+	
+	
 }
