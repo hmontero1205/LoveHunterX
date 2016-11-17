@@ -9,7 +9,7 @@ public class CellRoom {
 		//ex: i want a 1/4 chance to get a true.
 		boolean[] test = new boolean[total];
 		for(int i = 0; i<desireable; i++){
-			//test.
+			//test.x
 		}
 		return true;
 	}
