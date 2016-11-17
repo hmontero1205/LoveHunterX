@@ -19,6 +19,7 @@ public class CellRoom {
 		accessible = genCondition(8,10);
 		if (accessible){
 			boneFrag = genCondition(1,2);
+			//x
 		}
 	}
 }
