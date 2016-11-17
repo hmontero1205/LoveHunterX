@@ -100,7 +100,7 @@ public class Bejeweled {
 			}
 			temp = 1;
 
-
+			//yay
 
 		}
 
