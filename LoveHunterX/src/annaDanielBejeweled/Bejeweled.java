@@ -1,4 +1,4 @@
-package annaDanielBejeweled;
+package ExplorerMain;
 
 import java.util.Scanner;
 
@@ -9,20 +9,20 @@ public class Bejeweled {
 	public static void main(String args[]){
 		symbol = new String[]{" A "," B "," C ",};
 
-		setGame();
-		in = new Scanner(System.in);
-		ask();
-		String[][] test = {{"a","a","a","a"},{"a","e","f","g"},{"a","j","h","i"},{"a","l","m","n"}};
-		//		swapBlank(test);
-		//		printPic(test);
+//		setGame();
+//		in = new Scanner(System.in);
+//		ask();
+//		String[][] test = {{"a","a","a","a"},{"a","e","f","g"},{"a","j","h","i"},{"a","l","m","n"}};
+//		swapBlank(test);
+//		printPic(test);
 //		printPic(test);
 //		System.out.println(checkCol(test,0)[2]);
-		//	printPic(test);
-		//		replaceBlank(test);
-		//		printPic(test);
-
-		//clearRow(test[0],checkRow(test[0])[1],checkRow(test[0])[2]);
-		//printPic(test);
+//		printPic(test);
+//		replaceBlank(test);
+//		printPic(test);
+//
+//		clearRow(test[0],checkRow(test[0])[1],checkRow(test[0])[2]);
+//		printPic(test);
 	}
 	public static void setGame(){
 		arr2d = new String[3][3];
@@ -38,14 +38,13 @@ public class Bejeweled {
 				clearRow(arr2d[i],checkRow(arr2d[i])[1],checkRow(arr2d[i])[2]);
 				replaceBlank(arr2d);
 			}
-			//			while(checkCol(arr2d,i)[0]==1){
-			//				clearCol(arr2d,checkCol(arr2d,i)[1],checkCol(arr2d,i)[2],i);
-			//				replaceBlank(arr2d);
-			//			}
+			while(checkCol(arr2d,i)[0]==1){
+				clearCol(arr2d,checkCol(arr2d,i)[1],checkCol(arr2d,i)[2],i);
+				replaceBlank(arr2d);
+			}
 		}
 		printPic(arr2d);
 	}
-
 	public static void printPic(String[][] pic){
 		for(int row = 0; row< pic.length; row++){
 			for(int col = 0; col < pic[row].length; col++){
@@ -54,7 +53,6 @@ public class Bejeweled {
 			System.out.println();
 		}
 	}
-
 	public static String[][] swap(String[][] grid,int r, int c,String d){
 
 		if(d.equals("w")){
@@ -73,7 +71,6 @@ public class Bejeweled {
 			grid[r][c] = temp;
 		}
 		if(d.equals("d")){
-			System.out.println("swapping right");
 			String temp = grid[r][c+1];
 			grid[r][c+1] = grid[r][c];
 			grid[r][c] = temp;
@@ -83,10 +80,9 @@ public class Bejeweled {
 		return grid;
 
 	}
-
 	public static void ask(){
 		int a  = 0;
-		while(a <3){
+		while(a <10){
 			System.out.println("which row?");
 			int row =  Integer.parseInt(in.nextLine());
 			System.out.println("which column?");
@@ -101,6 +97,7 @@ public class Bejeweled {
 						swapBlank(arr2d);
 						replaceBlank(arr2d);
 						a++;
+
 					}
 					if(checkCol(arr2d,i)[0] == 1){
 						clearCol(arr2d,checkCol(arr2d,i)[1],checkCol(arr2d,i)[2],i);
@@ -108,13 +105,13 @@ public class Bejeweled {
 						replaceBlank(arr2d);
 						a++;
 					}
+					System.out.println(a);
 				}
 			}
 			printPic(arr2d);
 		}
 
 	}
-
 	public static int[] checkRow(String[] row){
 		int[] results = new int[3];
 		int longest = 1;
@@ -147,7 +144,6 @@ public class Bejeweled {
 		return results ;
 
 	}
-
 	public static void clearRow(String[] row, int longest, int longestIndex) {
 		for(int i = 0; i<longest; i++){
 			row[longestIndex+i] = "   ";
@@ -207,7 +203,6 @@ public class Bejeweled {
 			}
 		}
 	}
-
 	public static void swapBlank(String[][]grid){
 		for(int row = grid.length-1; row > 0; row--){
 			for(int col = 0; col < grid[0].length-1; col++){
@@ -218,8 +213,4 @@ public class Bejeweled {
 			}
 		}
 	}
-
 }
-
-
-
