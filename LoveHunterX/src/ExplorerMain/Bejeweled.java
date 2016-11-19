@@ -7,11 +7,11 @@ public class Bejeweled {
 	public static Scanner in;
 	public static String[] symbol;
 	public static void main(String args[]){
-		symbol = new String[]{" A "," B "," C "," D "};
+		symbol = new String[]{" A "," B "," C ",};
 
-		//setGame();
+		setGame();
 		in = new Scanner(System.in);
-		//ask();
+		ask();
 		String[][] test = {{"a","a","a","a"},{"n","e","f","g"},{"x","j","h","i"},{"a","l","m","n"}};
 		//printPic(test);
 //		System.out.println(" ");
@@ -27,11 +27,11 @@ public class Bejeweled {
 //		replaceBlank(test);
 //		printPic(test);
 		
-		clearRow(test[0],checkRow(test[0])[1],checkRow(test[0])[2]);
-		printPic(test);
+		//clearRow(test[0],checkRow(test[0])[1],checkRow(test[0])[2]);
+		//printPic(test);
 	}
 	public static void setGame(){
-		arr2d = new String[10][10];
+		arr2d = new String[2][3];
 		for(int row= 0; row < arr2d.length;row++){
 			for(int col = 0; col < arr2d[row].length;col++){
 				double rand = Math.random();
@@ -83,7 +83,7 @@ public class Bejeweled {
 
 	public static void ask(){
 		int a  = 0;
-		while(a  <2){
+		while(a <2){
 			System.out.println("which row?");
 			int row =  Integer.parseInt(in.nextLine());
 			System.out.println("which column?");
@@ -92,6 +92,14 @@ public class Bejeweled {
 			String dir = in.nextLine();
 			System.out.println(row+ " "+ col + " " +dir);
 			printPic(swap(arr2d, row,col,dir));
+			for(int i = 0;i<arr2d.length;i++){
+				checkRow(arr2d[i]);
+				if(checkRow(arr2d[i])[0] == 1 ){
+					clearRow(arr2d[i],checkRow(arr2d[i])[1],checkRow(arr2d[i])[2]);
+					swapBlank(arr2d);
+					replaceBlank(arr2d);
+				}
+			}
 			a++;
 		}
 
@@ -125,8 +133,8 @@ public class Bejeweled {
 			return results;
 			
 		}
-
-		return null ;
+		results[0] = 0;
+		return results ;
 
 	}
 
@@ -170,7 +178,7 @@ public class Bejeweled {
 	public static void replaceBlank(String[][] grid){
 		for(int row= 0; row < grid.length;row++){
 			for(int col = 0; col < grid[row].length;col++){
-				if(grid[row][col].equals(" ")){
+				if(grid[row][col].equals("   ")){
 					double rand = Math.random();
 					int roll = (int) (symbol.length * rand);
 					grid[row][col] = symbol[roll];
