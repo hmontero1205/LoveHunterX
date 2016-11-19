@@ -1,4 +1,4 @@
-<b>LoveHunterX</b>
+#LoveHunterX
 
 Hans Montero & Shoheb Ome
 Michael Li & David Szymanski
