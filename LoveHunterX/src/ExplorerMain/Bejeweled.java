@@ -12,26 +12,20 @@ public class Bejeweled {
 		setGame();
 		in = new Scanner(System.in);
 		ask();
-		String[][] test = {{"a","a","a","a"},{"n","e","f","g"},{"x","j","h","i"},{"a","l","m","n"}};
-		//printPic(test);
-//		System.out.println(" ");
-//		//swap(test,);
-//		//checkCol(test,0);
-//		swapBlank(test);
+		String[][] test = {{"a","a","a","a"},{"a","e","f","g"},{"a","j","h","i"},{"a","l","m","n"}};
+		//		swapBlank(test);
+		//		printPic(test);
 //		printPic(test);
-//		System.out.println(" ");
-//		replaceBlank(test);
-//		printPic(test);
-	//	checkRow(test[0]);
-	//	printPic(test);
-//		replaceBlank(test);
-//		printPic(test);
-		
+//		System.out.println(checkCol(test,0)[2]);
+		//	printPic(test);
+		//		replaceBlank(test);
+		//		printPic(test);
+
 		//clearRow(test[0],checkRow(test[0])[1],checkRow(test[0])[2]);
 		//printPic(test);
 	}
 	public static void setGame(){
-		arr2d = new String[2][3];
+		arr2d = new String[3][3];
 		for(int row= 0; row < arr2d.length;row++){
 			for(int col = 0; col < arr2d[row].length;col++){
 				double rand = Math.random();
@@ -39,8 +33,17 @@ public class Bejeweled {
 				arr2d[row][col] = symbol[roll];
 			}
 		}
+		for(int i =0; i < arr2d.length;i++){
+			while(checkRow(arr2d[i])[0] == 1){
+				clearRow(arr2d[i],checkRow(arr2d[i])[1],checkRow(arr2d[i])[2]);
+				replaceBlank(arr2d);
+			}
+			//			while(checkCol(arr2d,i)[0]==1){
+			//				clearCol(arr2d,checkCol(arr2d,i)[1],checkCol(arr2d,i)[2],i);
+			//				replaceBlank(arr2d);
+			//			}
+		}
 		printPic(arr2d);
-
 	}
 
 	public static void printPic(String[][] pic){
@@ -83,24 +86,31 @@ public class Bejeweled {
 
 	public static void ask(){
 		int a  = 0;
-		while(a <2){
+		while(a <3){
 			System.out.println("which row?");
 			int row =  Integer.parseInt(in.nextLine());
 			System.out.println("which column?");
 			int col = Integer.parseInt(in.nextLine());
 			System.out.println("which direction?");
-			String dir = in.nextLine();
-			System.out.println(row+ " "+ col + " " +dir);
-			printPic(swap(arr2d, row,col,dir));
+			String dir = in.nextLine();	
+			swap(arr2d, row,col,dir);
 			for(int i = 0;i<arr2d.length;i++){
-				checkRow(arr2d[i]);
-				if(checkRow(arr2d[i])[0] == 1 ){
-					clearRow(arr2d[i],checkRow(arr2d[i])[1],checkRow(arr2d[i])[2]);
-					swapBlank(arr2d);
-					replaceBlank(arr2d);
+				while(checkRow(arr2d[i])[0]==1||checkCol(arr2d,i)[0]==1){
+					if(checkRow(arr2d[i])[0] == 1 ){
+						clearRow(arr2d[i],checkRow(arr2d[i])[1],checkRow(arr2d[i])[2]);
+						swapBlank(arr2d);
+						replaceBlank(arr2d);
+						a++;
+					}
+					if(checkCol(arr2d,i)[0] == 1){
+						clearCol(arr2d,checkCol(arr2d,i)[1],checkCol(arr2d,i)[2],i);
+						swapBlank(arr2d);
+						replaceBlank(arr2d);
+						a++;
+					}
 				}
 			}
-			a++;
+			printPic(arr2d);
 		}
 
 	}
@@ -131,7 +141,7 @@ public class Bejeweled {
 			results[1] = longest;
 			results[2] = longestIndex;
 			return results;
-			
+
 		}
 		results[0] = 0;
 		return results ;
@@ -142,12 +152,13 @@ public class Bejeweled {
 		for(int i = 0; i<longest; i++){
 			row[longestIndex+i] = "   ";
 		}
-		
-		
-	}
-	public static  boolean checkCol(String[][]grid, int a){
 
+
+	}
+	public static  int[] checkCol(String[][]grid, int a){
+		int[] results = new int[3];
 		int longest = 1;
+		int longestIndex = 0;
 		int temp = 1;
 		for(int i = 0;i<grid.length;i++){
 			int index = i;
@@ -159,6 +170,8 @@ public class Bejeweled {
 			i = index;
 			if(longest<temp){
 				longest = temp;
+				longestIndex = index - (longest-1);
+
 			}
 			temp = 1;
 
@@ -167,14 +180,22 @@ public class Bejeweled {
 		}
 
 		if (longest>=3){
-			System.out.println("found greater than three");
-			return true;
+			results[0] = 1;
+			results[1] = longest;
+			results[2] = longestIndex;
+			return results;
+
 		}
 
-		return false;
+		results[0] = 0;
+		return results ;
 
 	}
-
+	public static void clearCol(String[][] col, int longest, int longestIndex,int a) {
+		for(int i = 0; i<longest; i++){
+			col[longestIndex+i][a] = "   ";
+		}
+	}
 	public static void replaceBlank(String[][] grid){
 		for(int row= 0; row < grid.length;row++){
 			for(int col = 0; col < grid[row].length;col++){
@@ -186,19 +207,19 @@ public class Bejeweled {
 			}
 		}
 	}
-	
+
 	public static void swapBlank(String[][]grid){
 		for(int row = grid.length-1; row > 0; row--){
 			for(int col = 0; col < grid[0].length-1; col++){
-				if(grid[row][col].equals(" ")){
+				if(grid[row][col].equals("   ")){
 					swap(grid,row,col,"w");
 				}
-					
+
 			}
 		}
 	}
-	
+
 }
 
-	
+
 
