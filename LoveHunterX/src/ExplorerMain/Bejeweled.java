@@ -9,10 +9,10 @@ public class Bejeweled {
 	public static void main(String args[]){
 		symbol = new String[]{" A "," B "," C "," D "};
 
-		setGame();
+		//setGame();
 		in = new Scanner(System.in);
-		ask();
-		String[][] test = {{"b","a","a","a"},{"n","e","f","g"},{"x","j","h","i"},{"a","l","m","n"}};
+		//ask();
+		String[][] test = {{"a","a","a","a"},{"n","e","f","g"},{"x","j","h","i"},{"a","l","m","n"}};
 		//printPic(test);
 //		System.out.println(" ");
 //		//swap(test,);
@@ -26,7 +26,9 @@ public class Bejeweled {
 	//	printPic(test);
 //		replaceBlank(test);
 //		printPic(test);
-
+		
+		clearRow(test[0],checkRow(test[0])[1],checkRow(test[0])[2]);
+		printPic(test);
 	}
 	public static void setGame(){
 		arr2d = new String[10][10];
@@ -110,12 +112,13 @@ public class Bejeweled {
 			i = index;
 			if(longest<temp){
 				longest = temp;
+				longestIndex = i - (longest-1);
 			}
 			temp = 1;
 		}
 
 		if (longest>=3){
-			System.out.println("found greater than four");
+			//System.out.println("found greater than four");
 			results[0] = 1;
 			results[1] = longest;
 			results[2] = longestIndex;
@@ -128,6 +131,9 @@ public class Bejeweled {
 	}
 
 	public static void clearRow(String[] row, int longest, int longestIndex) {
+		for(int i = 0; i<longest; i++){
+			row[longestIndex+i] = "   ";
+		}
 		
 		
 	}
