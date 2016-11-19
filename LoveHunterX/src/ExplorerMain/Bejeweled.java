@@ -8,16 +8,20 @@ public class Bejeweled {
 	public static String[] symbol;
 	public static void main(String args[]){
 		symbol = new String[]{"A","B","C"};
-		
+
 		setGame();
 		in = new Scanner(System.in);
 		ask();
-		//String[][] test = {{"a","b","c","d"},{"a","e","f","g"},{"a","j","h","i"},{"a","l","m","n"}};
-		//printPic(test);
-		//System.out.println("swapping");
-		//swap(test,);
-		// wdf
-		//checkCol(test,0);
+		String[][] test = {{" ","b","c","d"},{"a","e","f","g"},{" ","j","h","i"},{"a","l","m","n"}};
+//		printPic(test);
+//		System.out.println(" ");
+//		//swap(test,);
+//		//checkCol(test,0);
+//		swapBlank(test);
+//		printPic(test);
+//		System.out.println(" ");
+//		replaceBlank(test);
+//		printPic(test);
 
 	}
 	public static void setGame(){
@@ -42,7 +46,7 @@ public class Bejeweled {
 		}
 	}
 
-	public static void swap(String[][] grid,int r, int c,String d){
+	public static String[][] swap(String[][] grid,int r, int c,String d){
 
 		if(d.equals("w")){
 			String temp = grid[r-1][c] ;
@@ -67,7 +71,7 @@ public class Bejeweled {
 
 		}
 
-		printPic( grid);
+		return grid;
 
 	}
 
@@ -81,7 +85,7 @@ public class Bejeweled {
 			System.out.println("which direction?");
 			String dir = in.nextLine();
 			System.out.println(row+ " "+ col + " " +dir);
-			swap(arr2d, row,col,dir);
+			printPic(swap(arr2d, row,col,dir));
 			a++;
 		}
 
@@ -157,6 +161,19 @@ public class Bejeweled {
 			}
 		}
 	}
+	
+	public static void swapBlank(String[][]grid){
+		for(int row = grid.length-1; row > 0; row--){
+			for(int col = 0; col < grid[0].length-1; col++){
+				if(grid[row][col].equals(" ")){
+					swap(grid,row,col,"w");
+				}
+					
+			}
+		}
+	}
+	
 }
 
+	
 
