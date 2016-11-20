@@ -31,4 +31,8 @@ public class CellRoom {
 	public boolean getBFrag(){
 		return boneFrag;
 	}
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> branch 'master' of https://github.com/hmontero1205/LoveHunterX.git
