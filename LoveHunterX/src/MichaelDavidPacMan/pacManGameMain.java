@@ -1,19 +1,40 @@
 package MichaelDavidPacMan;
 
-	import java.util.Scanner;
+import java.util.Scanner;
+import MichaelDavidPacMan.CellRoom;
 
 public class pacManGameMain {
-	
-//things we need:
-//	a default grid
-//	a pacman
-//	dogs
-//	pieces of bones
-	
-	
+
+	//things we need:
+	//	a default grid - I got this
+	//	a pacman
+	//	dogs
+	//	pieces of bones
+
+	public static CellRoom cells[][];
+	public static Scanner in;
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		in = new Scanner(System.in);
+		cells = new CellRoom[8][8];
+//		for(int r=0; r<cells.length;r++){
+//			for(int c=0;c<cells[r].length;c++){
+//				cells[r][c]= new CellRoom();
+//				if(cells[r][c].getAccessible()){
+//					System.out.print("T");
+//				}else{
+//					System.out.print("F");
+//				}
+//			}
+//			System.out.println(); xD
+//		}
+		printMaze();
+	}
 
+	public static void printMaze(){
+		String[][] grid = new String[cells.length][cells[0].length];
+		
 	}
 
 	private static void generateGrid(){
@@ -23,13 +44,13 @@ public class pacManGameMain {
 				grid[row][col] = " ";
 			}
 		}
-		
+
 		for(int row = 0; row < grid.length; row++){
 			for(int col = 0; col < grid[row].length; col += 5){
 				grid[row][col] = "|";
 			}
 		}
-		
+
 		for(int row = 0; row < grid.length; row += 3){
 			for(int col = 0; col < grid[row].length; col ++){
 				if(grid[row][col].equals(" ")){
