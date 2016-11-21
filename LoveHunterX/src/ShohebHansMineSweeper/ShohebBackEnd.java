@@ -2,47 +2,61 @@ package ShohebHansMineSweeper;
 
 public class ShohebBackEnd {
 	public static int[][] board;
-	public static String[][] count;
+	public static int[][] count;
+	public static boolean[][] isHidden;
 	public static final String[][] questionAnswers = {{"Q1", "GA", "BA", "GR, BR"}, {"Q1", "GA", "BA", "GR, BR"},{"Q1", "GA", "BA", "GR, BR"},{"Q1", "GA", "BA", "GR, BR"},{"Q1", "GA", "BA", "GR, BR"},{"Q1", "GA", "BA", "GR, BR"}};
 	
-	public static void main(String[] args){
-		createBoards();
-	}
-	//
 	public void cycleThroughQuestions(int totalQuestions){
 		boolean[] availableQuestions = new boolean[questionAnswers.length];
-		for(int i = 0; i < totalQuestions; i++){
+		int i = 0;
+		for(i = 0; i < totalQuestions; i++){
 			int qIndex = (int)(Math.random()*questionAnswers.length);
 			while(availableQuestions[qIndex]){
 				qIndex = (int)(Math.random()*questionAnswers.length);
 			}
 			availableQuestions[qIndex] = true;
 			System.out.println(questionAnswers[qIndex][0]);
-			commenceUserResponse();
+			int[] coords = HansFrontEnd.getUserResponse();
+			if(board[coords[0]][coords[1]] == 2){
+				loseGame(qIndex);
+				break;
+			}
+			else{
+				updateBooleanArray(coords[0], coords[1]);
+			}
+		}
+		if(i == totalQuestions){
+			winGame();
 		}
 	}
-	
-	private void commenceUserResponse() {
+
+	private void winGame() {
 		// TODO Auto-generated method stub
 		
 	}
 
-	private static void createBoards(){
+	private void loseGame(int questionNum) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public static void createBoards(){
 		int rows = (int)(Math.random()*7 + 5);
 		int columns = (int)(Math.random()*5 + 20);
 		board = new int[rows][columns];
 		fillBoard();
 		System.out.println(rows + "   " + columns);
-		print2DIntArray(board);
-		count = new String[rows][columns];
+		//print2DIntArray(board);
+		count = new int[rows][columns];
 		fillCount();
-		print2DStringArray(count);
+		isHidden = new boolean[rows][columns];
+		//print2DStringArray(count);
 	}
 	
 	private static void fillBoard(){
 		for(int r = 0; r < board.length; r++){
 			for(int c = 0; c < board[r].length; c++){
-				if(Math.random() < .25){
+				if(Math.random() < .15){
 					board[r][c] = 2;
 				}
 				else{
@@ -55,17 +69,12 @@ public class ShohebBackEnd {
 	private static void fillCount(){
 		for(int r = 0; r < board.length; r++){
 			for(int c = 0; c < board[r].length; c++){
-				if(board[r][c] == 1){
-					count[r][c] = countAdjacent(board, r, c);
-				}
-				else{
-					count[r][c] = "X";
-				}
+				count[r][c] = countAdjacent(board, r, c);
 			}
 		}
 	}
 	
-	private static String countAdjacent(int[][] mines, int r, int c) {
+	private static int countAdjacent(int[][] mines, int r, int c) {
 		int count = 0;
 				
 		count+=(isAdjacentMine(mines, r, c-1));
@@ -84,7 +93,7 @@ public class ShohebBackEnd {
 			
 		count+=(isAdjacentMine(mines, r-1, c+1));
 		
-		return count + "";
+		return count;
 	}
 	
 	private static int isAdjacentMine(int[][] mines, int r, int c){
@@ -93,22 +102,11 @@ public class ShohebBackEnd {
 		}
 		return 0;
 	}
-	
-	private static void print2DIntArray(int[][] arr2D){
-		for(int[] i: arr2D){
-			for(int num: i){
-				System.out.print(num);
-			}
-			System.out.print("\n");
-		}
+
+	public static void updateBooleanArray(int row, int col) {
+		//isHidden[]
+		
 	}
 	
-	public static void print2DStringArray(String[][] arr2D){
-		for(String[] s: arr2D){
-			for(String str: s){
-				System.out.print(str);
-			}
-			System.out.print("\n");
-		}
-	}
+	
 }
