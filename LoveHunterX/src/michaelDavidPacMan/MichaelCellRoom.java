@@ -6,7 +6,7 @@ public class MichaelCellRoom {
 	public static int currentRoomRow = 0;
 	public static int currentRoomCol = 0;
 	public String pacLocated ="";
-	
+
 	private static boolean genCondition(int desireable, int total){
 		//random generate a true/false statement based on parameter.
 		//ex: i want a 1/4 chance to get a true.
@@ -26,20 +26,16 @@ public class MichaelCellRoom {
 			this.boneFrag = genCondition(3,8);
 		}
 	}
-	
+
 	public boolean getAccessible(){
-		return accessible;
+		return this.accessible;
 	}
-	
+
 	public boolean getBFrag(){
-		return boneFrag;
+		return this.boneFrag;
 	}
-	
-	public void enter(){
-		pacLocated = "!";
-	}
-	
-	public void exit(){
-		pacLocated = "";
+
+	public void changeBoneStatus(){
+		this.boneFrag=false;
 	}
 }

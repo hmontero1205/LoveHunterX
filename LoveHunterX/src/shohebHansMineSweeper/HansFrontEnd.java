@@ -3,74 +3,95 @@ package shohebHansMineSweeper;
 import java.util.Scanner;
 
 import hansExplorerMain.Event;
+import hansExplorerMain.HansCaveExplorer;
 
 public class HansFrontEnd implements Event{
 	
 	public static Scanner in = new Scanner(System.in);
+	public static int[] coords = new int[2];
 	
-	public void play(String[] args){
+	
+	public void play(){
 		ShohebBackEnd.createBoards();
-		//print2DIntArray(ShohebBackEnd.count);
-		//displayBoard();
+		displayBoard();
+		ShohebBackEnd.cycleThroughQuestions(5);
 	}
-	//
-	private static void displayBoard() {
-		//for(int row = 0; row < ShohebBackEnd.)
+	
+	public static void loseGame() {
+		System.out.println("lmao ur dooonnnnneeeeee");
+		
 	}
+	
+	public static void winGame(){
+		System.out.println("lmao u woonnnnnnnnnnn");
+		HansCaveExplorer.caves[2][9].getDoor(2).setLocked(true);
+	}
+	
+	public static void displayBoard() {
+		System.out.print("  ");
+		for(int c = 0; c < ShohebBackEnd.isNotHidden[0].length; c++){
+			System.out.print("|" + c + "|");
+		}
+		System.out.print("\n");
+		for(int row = 0; row < ShohebBackEnd.isNotHidden.length; row++){
+			for(int col = -1; col < ShohebBackEnd.isNotHidden[row].length; col++){
+				if(col == -1){
+					System.out.print(row + " ");
+				}
+				else{
+					if(!ShohebBackEnd.isNotHidden[row][col]){
+						System.out.print(" _ ");
+					}
+					else{
+						if(ShohebBackEnd.board[row][col] == 1){
+							System.out.print(" " + ShohebBackEnd.count[row][col]);
+						}
+						else{
+							System.out.print(" X");
+						}
+					}
+				}
+			}
+			System.out.print("\n");
+		}
+	}
+	
 
-	public static int[] getUserResponse(){
+	public static void getUserResponse(){
 		System.out.println("Please select a row");
 		String row = in.nextLine();
-		while(!isValid(row)){
-			System.out.println("Please input a number thx");
+		while(!isValid(row, ShohebBackEnd.board.length-1)){
+			System.out.println("Please input a number between 0 and " + (ShohebBackEnd.board.length-1) + " thx");
 			row = in.nextLine();
 		}
 		int r = Integer.parseInt(row);
 		System.out.println("Please select a column");
 		String column = in.nextLine();
-		while(!isValid(column)){
-			System.out.println("Please input a number thx");
+		while(!isValid(column, ShohebBackEnd.board[0].length-1)){
+			System.out.println("Please input a number between 0 and " + (ShohebBackEnd.board[0].length-1) + " thx");
 			column = in.nextLine();
 		}
 		int col = Integer.parseInt(column);
-		int[] coords = {r, col};
-		return coords;
+		if(ShohebBackEnd.isNotHidden[r][col]){
+			System.out.println("You must pick a space that isn't already visible!");
+			getUserResponse();
+		}
+		else{
+			coords[0] = r;
+			coords[1] = col;
+		}
 	}
 	
-	public static boolean isValid(String input){
+	public static boolean isValid(String input, int max){
 		try{
 			int num = Integer.parseInt(input);
 		}catch(NumberFormatException nfe){
 			return false;
 		}
+		int num = Integer.parseInt(input);
+		if(num < 0 || num > max){
+			return false;
+		}
 		return true;
 	}
-	
-	private static void print2DIntArray(int[][] arr2D){
-		for(int[] i: arr2D){
-			for(int num: i){
-				System.out.print(num);
-			}
-			System.out.print("\n");
-		}
-	}
-	
-	public static void print2DStringArray(String[][] arr2D){
-		for(String[] s: arr2D){
-			for(String str: s){
-				System.out.print(str);
-			}
-			System.out.print("\n");
-		}
-	}
-
-	@Override
-	public void play() {
-		// TODO Auto-generated method stub
-		
-	}
-	
-
-
-
 }

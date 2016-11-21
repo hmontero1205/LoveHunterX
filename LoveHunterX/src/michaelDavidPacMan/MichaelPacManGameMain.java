@@ -1,10 +1,11 @@
 package michaelDavidPacMan;
 
 import java.util.Scanner;
-
 import michaelDavidPacMan.MichaelCellRoom;
+import hansExplorerMain.Event;
+import hansExplorerMain.HansCaveExplorer;
 
-public class MichaelPacManGameMain {
+public class MichaelPacManGameMain implements Event {
 
 	//things we need:
 	//	a default grid - I got this, any questions feel free to email me. mli8855@bths.edu
@@ -14,22 +15,37 @@ public class MichaelPacManGameMain {
 
 	public static MichaelCellRoom cells[][];
 	public static Scanner in;
-	public static boolean inPacGame = true;
+	public static boolean inPacGame=true;
+	
+	public MichaelPacManGameMain(){
+		
+	}
 
-	public static void main(String[] args) {
+	public void play() {
 		// TODO Auto-generated method stub
 		in = new Scanner(System.in);
 		cells = new MichaelCellRoom[10][10];
 		for(int r=0; r<cells.length;r++){
 			for(int c=0;c<cells[r].length;c++){
 				cells[r][c]= new MichaelCellRoom();
-//				if(cells[r][c].getAccessible()){
-//					System.out.print("T");
-//				}else{
-//					System.out.print("F");
-//				}
+				//				if(cells[r][c].getAccessible()){
+				//					System.out.print("T");
+				//				}else{
+				//					System.out.print("F");
+				//				}
 			}
-//			System.out.println();
+			//			System.out.println();
+		}
+		while(inPacGame){
+			printMaze();
+			String input = in.nextLine();
+			MichaelPacMan.interpretInput(input);
+			MichaelPacMan.getBoneFrags();
+			if(MichaelPacMan.getNumCollected()>=10){
+				System.out.println("You fed the doge and now doge respects you.");
+				inPacGame=false;
+				HansCaveExplorer.caves[4][1].getDoor(1).setLocked(false);
+			}
 		}
 	}
 
@@ -53,15 +69,14 @@ public class MichaelPacManGameMain {
 			}
 		}
 		//starting cell must be accessible.
-		grid[0][0] = "!";
 		cells[0][0].accessible = true;
-		
+
 		//upper border
 		for (int col = 0; col < grid[0].length; col++){
 			System.out.print(" _");
 		}
 		System.out.println();
-		
+
 		for (int row = 0; row < grid.length; row++){
 			for(int col = 0; col < grid[row].length; col++){
 				System.out.print("|");
@@ -72,10 +87,13 @@ public class MichaelPacManGameMain {
 			}
 			System.out.println();
 		}
-		
+
 		//bottom border
 		for (int col = 0; col < grid[0].length; col++){
 			System.out.print(" ¯");
 		}
+
+		System.out.println("\n You have collected " + MichaelPacMan.getNumCollected() + " bone fragments.");
 	}
+
 }

@@ -3,10 +3,10 @@ package shohebHansMineSweeper;
 public class ShohebBackEnd {
 	public static int[][] board;
 	public static int[][] count;
-	public static boolean[][] isHidden;
-	public static final String[][] questionAnswers = {{"Q1", "GA", "BA", "GR, BR"}, {"Q1", "GA", "BA", "GR, BR"},{"Q1", "GA", "BA", "GR, BR"},{"Q1", "GA", "BA", "GR, BR"},{"Q1", "GA", "BA", "GR, BR"},{"Q1", "GA", "BA", "GR, BR"}};
+	public static boolean[][] isNotHidden;
+	public static final String[][] questionAnswers = {{"Q1", "GA", "BA", "GR", "BR"}, {"Q1", "GA", "BA", "GR", "BR"}, {"Q1", "GA", "BA", "GR", "BR"}, {"Q1", "GA", "BA", "GR", "BR"}, {"Q1", "GA", "BA", "GR", "BR"}, {"Q1", "GA", "BA", "GR", "BR"}};
 	
-	public void cycleThroughQuestions(int totalQuestions){
+	public static void cycleThroughQuestions(int totalQuestions){
 		boolean[] availableQuestions = new boolean[questionAnswers.length];
 		int i = 0;
 		for(i = 0; i < totalQuestions; i++){
@@ -16,28 +16,23 @@ public class ShohebBackEnd {
 			}
 			availableQuestions[qIndex] = true;
 			System.out.println(questionAnswers[qIndex][0]);
-			int[] coords = HansFrontEnd.getUserResponse();
-			if(board[coords[0]][coords[1]] == 2){
-				loseGame(qIndex);
+			HansFrontEnd.getUserResponse();
+			int boardSpace = board[HansFrontEnd.coords[0]][HansFrontEnd.coords[1]];
+			updateBooleanArray(HansFrontEnd.coords[0], HansFrontEnd.coords[1]);
+			HansFrontEnd.displayBoard();
+			System.out.println(questionAnswers[qIndex][boardSpace]);
+			if(boardSpace == 2){
+				System.out.println(questionAnswers[qIndex][4]);
+				HansFrontEnd.loseGame();
 				break;
 			}
 			else{
-				updateBooleanArray(coords[0], coords[1]);
+				System.out.println(questionAnswers[qIndex][3]);
 			}
 		}
 		if(i == totalQuestions){
-			winGame();
+			HansFrontEnd.winGame();
 		}
-	}
-
-	private void winGame() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	private void loseGame(int questionNum) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	public static void createBoards(){
@@ -46,11 +41,9 @@ public class ShohebBackEnd {
 		board = new int[rows][columns];
 		fillBoard();
 		System.out.println(rows + "   " + columns);
-		//print2DIntArray(board);
 		count = new int[rows][columns];
 		fillCount();
-		isHidden = new boolean[rows][columns];
-		//print2DStringArray(count);
+		isNotHidden = new boolean[rows][columns];
 	}
 	
 	private static void fillBoard(){
@@ -76,23 +69,14 @@ public class ShohebBackEnd {
 	
 	private static int countAdjacent(int[][] mines, int r, int c) {
 		int count = 0;
-				
 		count+=(isAdjacentMine(mines, r, c-1));
-			
 		count+=(isAdjacentMine(mines, r, c+1));
-		
 		count+=(isAdjacentMine(mines, r-1, c));
-			
 		count+=(isAdjacentMine(mines, r+1, c));
-			
 		count+=(isAdjacentMine(mines, r-1, c-1));
-			
 		count+=(isAdjacentMine(mines, r-1, c+1));
-			
 		count+=(isAdjacentMine(mines, r+1, c-1));
-			
 		count+=(isAdjacentMine(mines, r-1, c+1));
-		
 		return count;
 	}
 	
@@ -102,11 +86,19 @@ public class ShohebBackEnd {
 		}
 		return 0;
 	}
-//
-	public static void updateBooleanArray(int row, int col) {
-		//isHidden[]
+
+	private static void updateBooleanArray(int row, int col) {
+		int[][] adjacentPosArray = {{row, col-1}, {row, col+1}, {row-1, col}, {row+1, col}, {row-1, col-1}, {row-1, col+1}, {row+1, col-1}, {row-1, col+1}};
+		isNotHidden[row][col] = true;
+		for(int p = 0; p < adjacentPosArray.length; p++){
+			int r = adjacentPosArray[p][0];
+			int c = adjacentPosArray[p][1];
+			if(r >= 0 && r < board.length && c >=0 && c < board[r].length && isAdjacentMine(board, r, c) == 0){ 
+				isNotHidden[r][c] = true;
+				/*if(count[r][c] == 0) //if there is no mine and no adjacent mine
+					updateBooleanArray(r, c);*/
+			}
 		
+		}
 	}
-	
-	
 }
