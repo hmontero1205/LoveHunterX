@@ -28,7 +28,7 @@ public class pacManGameMain {
 //					System.out.print("F");
 //				}
 			}
-//			System.out.println();
+//			System.out.println();.
 		}
 		printMaze();
 	}
