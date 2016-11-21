@@ -7,12 +7,13 @@ public class pacManGameMain {
 
 	//things we need:
 	//	a default grid - I got this, any questions feel free to email me. mli8855@bths.edu
-	//	a pacman
+	//	a pacman - This too.
 	//	dogs
-	//	pieces of bones
+	//	pieces of bones - can be done /w a counter.
 
 	public static MichaelCellRoom cells[][];
 	public static Scanner in;
+	public static boolean inPacGame = true;
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

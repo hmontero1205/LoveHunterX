@@ -1,8 +1,10 @@
 package MichaelDavidPacMan;
 
 public class MichaelCellRoom {
-	private boolean accessible;
-	private boolean boneFrag;
+	public boolean accessible;
+	public boolean boneFrag;
+	
+	public String pacLocated ="";
 	
 	private static boolean genCondition(int desireable, int total){
 		//random generate a true/false statement based on parameter.
@@ -30,5 +32,13 @@ public class MichaelCellRoom {
 	
 	public boolean getBFrag(){
 		return boneFrag;
+	}
+	
+	public void enter(){
+		pacLocated = "!";
+	}
+	
+	public void exit(){
+		pacLocated = "";
 	}
 }
