@@ -1,8 +1,10 @@
 package MichaelDavidPacMan;
 
-public class CellRoom {
-	private boolean accessible;
-	private boolean boneFrag;
+public class MichaelCellRoom {
+	public boolean accessible;
+	public boolean boneFrag;
+	
+	public String pacLocated ="";
 	
 	private static boolean genCondition(int desireable, int total){
 		//random generate a true/false statement based on parameter.
@@ -15,12 +17,12 @@ public class CellRoom {
 		return test[rand];
 	}
 
-	public CellRoom(){
+	public MichaelCellRoom(){
 		//chance room is accessible 	
-		this.accessible = genCondition(7,10);
+		this.accessible = genCondition(8,10);
 		if (accessible){
 			//if accessible, probability of getting a bone frag.
-			this.boneFrag = genCondition(2,3);
+			this.boneFrag = genCondition(3,8);
 		}
 	}
 	
@@ -30,5 +32,13 @@ public class CellRoom {
 	
 	public boolean getBFrag(){
 		return boneFrag;
+	}
+	
+	public void enter(){
+		pacLocated = "!";
+	}
+	
+	public void exit(){
+		pacLocated = "";
 	}
 }

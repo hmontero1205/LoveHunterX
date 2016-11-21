@@ -29,6 +29,11 @@ public class CaveRoom {
 //		}
 		setDirections();
 	}
+	
+	public void updateContents(String c){
+		defaultContents = c;
+		contents = c;
+	}
 
 	protected void setDirections() {
 		directions	= "";
