@@ -1,4 +1,4 @@
-import ExplorerMain.CaveExplorer;
+package annaDanielBejeweled;
 
 import java.util.Scanner;
 
@@ -7,11 +7,11 @@ public class Bejeweled {
 	public static Scanner in;
 	public static String[] symbol;
 	public static void main(String args[]){
-		symbol = new String[]{" A "," B "," C ",};
+		symbol = new String[]{" A "," B "," C "," D "};
 
-//		setGame();
-//		in = new Scanner(System.in);
-//		ask();
+		setGame();
+		in = new Scanner(System.in);
+		ask();
 //		String[][] test = {{"a","a","a","a"},{"a","e","f","g"},{"a","j","h","i"},{"a","l","m","n"}};
 //		swapBlank(test);
 //		printPic(test);
@@ -25,7 +25,8 @@ public class Bejeweled {
 //		printPic(test);
 	}
 	public static void setGame(){
-		arr2d = new String[3][3];
+		int number = (int)(Math.random() * 12 + 5 );
+		arr2d = new String[number][number];
 		for(int row= 0; row < arr2d.length;row++){
 			for(int col = 0; col < arr2d[row].length;col++){
 				double rand = Math.random();
@@ -43,11 +44,29 @@ public class Bejeweled {
 				replaceBlank(arr2d);
 			}
 		}
+		System.out.print("    ");
+		for(int i=0; i<arr2d.length; i++){
+			if(i<10){
+				System.out.print(i+"  ");
+			}
+			else{
+				System.out.print(i+" ");
+			}
+			
+		}
+		System.out.println();
 		printPic(arr2d);
 	}
 	public static void printPic(String[][] pic){
 		for(int row = 0; row< pic.length; row++){
+			if(row>9){
+				System.out.print(row +" ");
+			}
+			else{
+				System.out.print(row +"  ");
+			}
 			for(int col = 0; col < pic[row].length; col++){
+				
 				System.out.print(pic[row][col]);
 			}
 			System.out.println();
