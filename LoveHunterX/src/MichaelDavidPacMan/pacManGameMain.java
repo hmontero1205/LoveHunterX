@@ -6,7 +6,7 @@ import MichaelDavidPacMan.MichaelCellRoom;
 public class pacManGameMain {
 
 	//things we need:
-	//	a default grid - I got this
+	//	a default grid - I got this, any questions feel free to email me. mli8855@bths.edu
 	//	a pacman
 	//	dogs
 	//	pieces of bones
