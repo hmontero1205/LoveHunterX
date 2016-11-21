@@ -3,7 +3,8 @@ package MichaelDavidPacMan;
 public class MichaelCellRoom {
 	public boolean accessible;
 	public boolean boneFrag;
-	
+	public static int currentRoomRow = 0;
+	public static int currentRoomCol = 0;
 	public String pacLocated ="";
 	
 	private static boolean genCondition(int desireable, int total){
