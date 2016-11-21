@@ -34,7 +34,10 @@ public class CaveRoom {
 		defaultContents = c;
 		contents = c;
 	}
-
+	
+	public Door getDoor(int dir){
+		return doors[dir];
+	}
 	protected void setDirections() {
 		directions	= "";
 		if(doors[NORTH] == null && 
@@ -106,12 +109,6 @@ public class CaveRoom {
 		return description+directions;
 	}
 
-	
-
-	
-	public Door getDoor(int dir){
-		return doors[dir];
-	}
 
 
 	public void setDescription(String string) {
@@ -134,11 +131,14 @@ public class CaveRoom {
 		goToRoom(indexFound);
 	}
 	public void goToRoom(int direction){
-		if(borderingRooms[direction]!=null && doors[direction].isOpen()){
+		if(borderingRooms[direction]!=null && !doors[direction].isLocked()){
 			CaveExplorer.currentRoom.leave();
 			CaveExplorer.currentRoom = borderingRooms[direction];
 			CaveExplorer.currentRoom.enter();
 			CaveExplorer.inventory.updateMap();
+		}
+		else{
+			System.out.println("This door is locked! You need the key man!!");
 		}
 	}
 	public static boolean isValid(String input){

@@ -68,20 +68,48 @@ public class CaveExplorer {
 		caves[1][4].setConnection(CaveRoom.SOUTH, caves[2][4], new Door("bathroom door",false));
 		caves[0][5].updateContents("M");
 		caves[4][0].updateContents("B");
-		caves[0][9].updateContents("D");
+		caves[0][9].updateContents("F");
 		caves[4][9].updateContents("G");
-		caves[0][1].updateContents("F");
-		caves[1][1].updateContents("F");
+		caves[0][1].updateContents("o");
+		caves[3][3].updateContents("D");
+		caves[1][1].updateContents("o");
 		caves[0][6].setConnection(CaveRoom.SOUTH, caves[1][6], new Door("bedroom tile",true));
 		caves[0][6].setConnection(CaveRoom.EAST, caves[0][7], new Door("bedroom tile",true));
-		//caves[1][6].setConnection(CaveRoom.SOUTH, caves[2][6], new Door("bedroom door",true));
-		//oh boy
+		caves[1][6].setConnection(CaveRoom.SOUTH, caves[2][6], new Door("bedroom door",false));
+		caves[1][6].setConnection(CaveRoom.EAST, caves[1][7], new Door("bedroom tile",true));
+		caves[1][7].setConnection(CaveRoom.NORTH, caves[0][7], new Door("bedroom tile",true));
+		caves[1][7].setConnection(CaveRoom.EAST, caves[1][8], new Door("bedroom tile",true));
+		caves[0][9].setConnection(CaveRoom.WEST, caves[0][8], new Door("bedroom tile",true));
+		caves[0][9].setConnection(CaveRoom.SOUTH, caves[1][9], new Door("bedroom tile",true));
+		caves[0][9].setConnection(CaveRoom.SOUTH, caves[1][9], new Door("bedroom tile",true));
+		caves[1][8].setConnection(CaveRoom.NORTH, caves[0][8], new Door("bedroom tile",true));
+		caves[1][8].setConnection(CaveRoom.EAST, caves[1][9], new Door("bedroom tile",true));
+		caves[0][7].setConnection(CaveRoom.EAST, caves[0][8], new Door("bedroom tile",true));
+		caves[4][9].setConnection(CaveRoom.NORTH, caves[3][9], new Door("bedroom tile",true));
+		caves[4][9].setConnection(CaveRoom.WEST, caves[4][8], new Door("bedroom tile",true));
+		caves[3][8].setConnection(CaveRoom.EAST, caves[3][9], new Door("bedroom tile",true));
+		caves[3][8].setConnection(CaveRoom.SOUTH, caves[4][8], new Door("bedroom tile",true));
+		caves[3][9].setConnection(CaveRoom.NORTH, caves[2][9], new Door("bedroom door",false));
+		caves[4][1].getDoor(1).setLocked(true);
+		caves[2][9].getDoor(2).setLocked(true);
+		
+//		caves[3][3] = new EventRoom("It's a doge!!!", new HansFrontEnd());
+//		caves[4][0] = new EventRoom("It's your girlfriend's little brother!", new HansFrontEnd());
+//		caves[0][5] = new EventRoom("It's your girlfriend's mother!!!", new HansFrontEnd());
+//		caves[0][9] = new EventRoom("It's your girlfriend's father!!!", new HansFrontEnd());
+//		caves[4][9] = new EventRoom("It's your girlfriend!!!", new HansFrontEnd());
+		
 		
 		inventory = new Inventory();
 		startExploring();
 	}
 
 	public static void startExploring() {
+		System.out.println("You find yourself at the front gate of your girlfriend's house.\n"
+				+ "She told you to come over at 8PM, but gave you no further directions...\n"
+				+ "You look to your East and see her room through the foggy window.\n"
+				+ "You knock on the glass to catch her attention. She smiles at you points you\n"
+				+ "in the opposite direction, towards the entrance of the house.");
 		while(true){
 			System.out.println(inventory.getDescription());
 			System.out.println(currentRoom.getDescription());

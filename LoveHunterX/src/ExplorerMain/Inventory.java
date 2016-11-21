@@ -23,7 +23,7 @@ public class Inventory {
 				//for(CaveRoom cr:row){//for each
 				for(int c=0;c<CaveExplorer.caves[r].length;c++){
 					
-					if(CaveExplorer.caves[r][c].getDoor(CaveRoom.WEST)!=null && CaveExplorer.caves[r][c].getDoor(CaveRoom.WEST).isOpen()){
+					if(CaveExplorer.caves[r][c].getDoor(CaveRoom.WEST)!=null && !CaveExplorer.caves[r][c].getDoor(CaveRoom.WEST).isLocked()){
 						if(CaveExplorer.caves[r][c].getDoor(CaveRoom.WEST).getIsRoom()){
 							text+=" ";
 						}
@@ -50,13 +50,14 @@ public class Inventory {
 						}
 						else{
 							if(i==2){
-								if(CaveExplorer.caves[r][c].getDoor(CaveRoom.SOUTH)!=null && CaveExplorer.caves[r][c].getDoor(CaveRoom.SOUTH).isOpen()){
+								if(CaveExplorer.caves[r][c].getDoor(CaveRoom.SOUTH)!=null && !CaveExplorer.caves[r][c].getDoor(CaveRoom.SOUTH).isLocked()){
 									if(CaveExplorer.caves[r][c].getDoor(CaveRoom.SOUTH).getIsRoom())
 										text+="   ";
 									else
 										text+="_ _";//bottom/top opening
 								}
 								else{
+									
 									text+="___";
 								}
 							}
