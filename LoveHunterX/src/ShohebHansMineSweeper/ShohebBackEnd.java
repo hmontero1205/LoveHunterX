@@ -3,11 +3,30 @@ package ShohebHansMineSweeper;
 public class ShohebBackEnd {
 	public static int[][] board;
 	public static String[][] count;
+	public static final String[][] questionAnswers = {{"Q1", "GA", "BA", "GR, BR"}, {"Q1", "GA", "BA", "GR, BR"},{"Q1", "GA", "BA", "GR, BR"},{"Q1", "GA", "BA", "GR, BR"},{"Q1", "GA", "BA", "GR, BR"},{"Q1", "GA", "BA", "GR, BR"}};
 	
 	public static void main(String[] args){
 		createBoards();
 	}
+	//
+	public void cycleThroughQuestions(int totalQuestions){
+		boolean[] availableQuestions = new boolean[questionAnswers.length];
+		for(int i = 0; i < totalQuestions; i++){
+			int qIndex = (int)(Math.random()*questionAnswers.length);
+			while(availableQuestions[qIndex]){
+				qIndex = (int)(Math.random()*questionAnswers.length);
+			}
+			availableQuestions[qIndex] = true;
+			System.out.println(questionAnswers[qIndex][0]);
+			commenceUserResponse();
+		}
+	}
 	
+	private void commenceUserResponse() {
+		// TODO Auto-generated method stub
+		
+	}
+
 	private static void createBoards(){
 		int rows = (int)(Math.random()*7 + 5);
 		int columns = (int)(Math.random()*5 + 20);
