@@ -58,8 +58,7 @@ public class MichaelPacManGameMain implements Event {
 			for(int col = 0; col < grid[row].length; col ++){
 				grid[row][col]=" ";
 				if(!(cells[row][col].getAccessible())){
-					grid[row][col]="X";
-					
+					grid[row][col]="X";		
 				}else{
 					if(cells[row][col].getBFrag()){
 						grid[row][col]="O";
@@ -94,7 +93,7 @@ public class MichaelPacManGameMain implements Event {
 		for (int col = 0; col < grid[0].length; col++){
 			System.out.print(" ¯");
 		}
-
+		DavidEnemy.insertEnemy(DavidEnemy.enemyRow,DavidEnemy.enemyCol);
 		System.out.println("\n You have collected " + MichaelPacMan.getNumCollected() + " bone fragments.");
 	}
 
