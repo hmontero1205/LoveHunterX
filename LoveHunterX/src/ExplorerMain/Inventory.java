@@ -11,38 +11,50 @@ public class Inventory {
 	public void updateMap() {
 		map = " ";
 		for(int i=0;i<CaveExplorer.caves[0].length-1;i++){
-			map+="____";//4 underscores
+			map+="____";//4 underscores (TOP)
 		}
-		map+="___\n";
-		for(CaveRoom[] row: CaveExplorer.caves){
+		map+="___\n";//top right
+		//for(CaveRoom[] row: CaveExplorer.caves){//for rows
+		for(int r=0;r<CaveExplorer.caves.length;r++){
 			//3 rows of text
 			for(int i=0;i<3;i++){
 				//a line of text for each room
 				String text = "";
-				for(CaveRoom cr:row){
+				//for(CaveRoom cr:row){//for each
+				for(int c=0;c<CaveExplorer.caves[r].length;c++){
 					
-					if(cr.getDoor(CaveRoom.WEST)!=null && cr.getDoor(CaveRoom.WEST).isOpen()){
-						if(i!=1){
-							text+="|";
+					if(CaveExplorer.caves[r][c].getDoor(CaveRoom.WEST)!=null && CaveExplorer.caves[r][c].getDoor(CaveRoom.WEST).isOpen()){
+						if(CaveExplorer.caves[r][c].getDoor(CaveRoom.WEST).getIsRoom()){
+							text+=" ";
 						}
 						else{
-							text+=" ";
+							if(i!=1){
+								text+="|";//wall for openings
+							}
+							else{
+								text+=" ";//side opening
+							}
 						}
 					}
 					else{
-						text+="|";
+						text+="|";//no opening
 					}
+					
+					
 					if(i==0){
-						text+="   ";//3 spaces
+						text+="   ";//3 spaces - top empty
 					}
 					else{
 						if(i==1){
-							text+=" "+cr.getContents()+" ";
+							text+=" "+CaveExplorer.caves[r][c].getContents()+" ";//middle empty
 						}
 						else{
 							if(i==2){
-								if(cr.getDoor(CaveRoom.SOUTH)!=null && cr.getDoor(CaveRoom.SOUTH).isOpen()){
-									text+="_ _";
+								if(CaveExplorer.caves[r][c].getDoor(CaveRoom.SOUTH)!=null && CaveExplorer.caves[r][c].getDoor(CaveRoom.SOUTH).isOpen()){
+									if(CaveExplorer.caves[r][c].getDoor(CaveRoom.SOUTH).getIsRoom())
+										text+="   ";
+									else
+										text+="_ _";//bottom/top opening
 								}
 								else{
 									text+="___";
@@ -51,7 +63,7 @@ public class Inventory {
 						}
 					}
 				}//last caveroom
-				text+="|";
+				text+="|";//end wall
 				map+=text+"\n";
 			}//last of the 3 txt lines
 		}//last row
