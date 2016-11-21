@@ -28,7 +28,7 @@ public class DavidEnemy {
 					}
 				}
 				if(randDirec == 3){
-					if(MichaelCellRoom.currentEnemyOneRoomRow<MichaelPacManGameMain.cells.length-1 && checkIfOneAccessible(1,0)){
+					if(MichaelCellRoom.currentEnemyOneRoomRow<MichaelDavidPacManGameMain.cells.length-1 && checkIfOneAccessible(1,0)){
 						MichaelCellRoom.currentEnemyOneRoomRow++;
 						inOneLoop = false;
 					}
@@ -37,7 +37,7 @@ public class DavidEnemy {
 					}
 				}
 				if(randDirec == 4){
-					if(MichaelCellRoom.currentEnemyOneRoomCol<MichaelPacManGameMain.cells[0].length-1 && checkIfOneAccessible(0,1)){
+					if(MichaelCellRoom.currentEnemyOneRoomCol<MichaelDavidPacManGameMain.cells[0].length-1 && checkIfOneAccessible(0,1)){
 						MichaelCellRoom.currentEnemyOneRoomCol++;
 						inOneLoop = false;
 					}
@@ -67,7 +67,7 @@ public class DavidEnemy {
 				}
 			}
 			if(randDirec == 3){
-				if(MichaelCellRoom.currentEnemyTwoRoomRow<MichaelPacManGameMain.cells.length-1 && checkIfTwoAccessible(1,0)){
+				if(MichaelCellRoom.currentEnemyTwoRoomRow<MichaelDavidPacManGameMain.cells.length-1 && checkIfTwoAccessible(1,0)){
 					MichaelCellRoom.currentEnemyTwoRoomRow++;
 					inTwoLoop = false;
 				}
@@ -76,7 +76,7 @@ public class DavidEnemy {
 				}
 			}
 			if(randDirec == 4){
-				if(MichaelCellRoom.currentEnemyTwoRoomCol<MichaelPacManGameMain.cells[0].length-1 && checkIfTwoAccessible(0,1)){
+				if(MichaelCellRoom.currentEnemyTwoRoomCol<MichaelDavidPacManGameMain.cells[0].length-1 && checkIfTwoAccessible(0,1)){
 					MichaelCellRoom.currentEnemyTwoRoomCol++;
 					inTwoLoop = false;
 				}
@@ -88,10 +88,10 @@ public class DavidEnemy {
 		
  	}
 	public static boolean checkIfOneAccessible(int eRow, int eCol){
-		return MichaelPacManGameMain.cells[MichaelCellRoom.currentEnemyOneRoomRow+eRow][MichaelCellRoom.currentEnemyOneRoomCol+eCol].getAccessible();
+		return MichaelDavidPacManGameMain.cells[MichaelCellRoom.currentEnemyOneRoomRow+eRow][MichaelCellRoom.currentEnemyOneRoomCol+eCol].getAccessible();
 	}
 	public static boolean checkIfTwoAccessible(int eRow, int eCol){
-		return MichaelPacManGameMain.cells[MichaelCellRoom.currentEnemyTwoRoomRow+eRow][MichaelCellRoom.currentEnemyTwoRoomCol+eCol].getAccessible();
+		return MichaelDavidPacManGameMain.cells[MichaelCellRoom.currentEnemyTwoRoomRow+eRow][MichaelCellRoom.currentEnemyTwoRoomCol+eCol].getAccessible();
 	}
 	
 	public static boolean checkLoseCondition(int currentRow, int currentCol){
