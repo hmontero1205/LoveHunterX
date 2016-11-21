@@ -75,7 +75,7 @@ public class CaveExplorer {
 		caves[0][6].setConnection(CaveRoom.SOUTH, caves[1][6], new Door("bedroom tile",true));
 		caves[0][6].setConnection(CaveRoom.EAST, caves[0][7], new Door("bedroom tile",true));
 		//caves[1][6].setConnection(CaveRoom.SOUTH, caves[2][6], new Door("bedroom door",true));
-		
+		//oh boy
 		
 		inventory = new Inventory();
 		startExploring();
