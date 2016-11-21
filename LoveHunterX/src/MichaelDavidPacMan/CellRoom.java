@@ -17,7 +17,7 @@ public class CellRoom {
 
 	public CellRoom(){
 		//chance room is accessible 	
-		this.accessible = genCondition(7,10);
+		this.accessible = genCondition(8,10);
 		if (accessible){
 			//if accessible, probability of getting a bone frag.
 			this.boneFrag = genCondition(2,3);
