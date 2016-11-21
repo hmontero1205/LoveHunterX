@@ -4,8 +4,7 @@ public class ShohebBackEnd {
 	public static int[][] board;
 	public static int[][] count;
 	public static boolean[][] isNotHidden;
-	public static final String[][] questionAnswers = {{"Q1", "GA", "BA", "GR", "BR"}, {"Q1", "GA", "BA", "GR", "BR"}, {"Q1", "GA", "BA", "GR", "BR"}, {"Q1", "GA", "BA", "GR", "BR"}, {"Q1", "GA", "BA", "GR", "BR"}, {"Q1", "GA", "BA", "GR", "BR"}};
-	
+	public static final String[][] questionAnswers = {{"What do you like most about my daughter?", "Her personality :)", "Her money xP", "Nice answer my dude", "hey man thats not nice"}, {"If you could take my daughter to one restaurant, where would you go?", "A nice italiano restaurante", "Mickey Dee's", "hell yeah", "y so cheap yo"}, {"Why do you think my daughter likes you?", "idk man im just blessed to have her", "im pretty funny xD", "wow youre so humble :)", "youre not tho lol"}, {"what's your ideal date", "a nice walk along the coastline at sunset", "i prefer to stay home man", "wow so romantic!", "ur boring :/"}, {"What's the most common error when dealing with arrays?", "array out of bounds exception of course", "idk how to code", "good looks buddy, thats important to know", "sorry, my daughter only dates REAL coders"}, {"What's your favorite programming language", "Java!", "Scratch", "nice, java is a good language. very professional", "grow up kid thats not a real language haha"}};
 	public static void cycleThroughQuestions(int totalQuestions){
 		boolean[] availableQuestions = new boolean[questionAnswers.length];
 		int i = 0;
@@ -101,4 +100,6 @@ public class ShohebBackEnd {
 		
 		}
 	}
+
+
 }

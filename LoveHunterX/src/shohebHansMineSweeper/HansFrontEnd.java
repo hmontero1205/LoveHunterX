@@ -12,19 +12,24 @@ public class HansFrontEnd implements Event{
 	
 	
 	public void play(){
+		System.out.println("You now stand face to face with your gf's dad. He has some questions for you...");
 		ShohebBackEnd.createBoards();
 		displayBoard();
 		ShohebBackEnd.cycleThroughQuestions(5);
 	}
 	
 	public static void loseGame() {
-		System.out.println("lmao ur dooonnnnneeeeee");
+		System.out.println("lmao ur dooonnnnneeeeee xD\n"
+				+ "You get kicked out of the house for being such a clown");
+		//System.out.close();
+		HansCaveExplorer.setGameOver(true);
 		
 	}
 	
 	public static void winGame(){
-		System.out.println("lmao u woonnnnnnnnnnn");
-		HansCaveExplorer.caves[2][9].getDoor(2).setLocked(true);
+		System.out.println("lmao u woonnnnnnnnnnn xD\n"
+				+ "With your entire gf's family respecting you, the door to her room unlocks :^)");
+		HansCaveExplorer.caves[2][9].getDoor(2).setLocked(false);
 	}
 	
 	public static void displayBoard() {

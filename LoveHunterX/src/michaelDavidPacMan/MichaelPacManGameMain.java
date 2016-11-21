@@ -22,7 +22,8 @@ public class MichaelPacManGameMain implements Event {
 	}
 
 	public void play() {
-		// TODO Auto-generated method stub
+		System.out.println("You encounter an angry looking doge. There are bone fragments scattered on the ground.\n"
+				+ "Maybe if you give doge enough bone fragments, he'll come thru with the key xD");
 		in = new Scanner(System.in);
 		cells = new MichaelCellRoom[10][10];
 		for(int r=0; r<cells.length;r++){
@@ -42,7 +43,7 @@ public class MichaelPacManGameMain implements Event {
 			MichaelPacMan.interpretInput(input);
 			MichaelPacMan.getBoneFrags();
 			if(MichaelPacMan.getNumCollected()>=10){
-				System.out.println("You fed the doge and now doge respects you.");
+				System.out.println("You fed the doge and now doge respects you. With that, doge gives you the key to the house.");
 				inPacGame=false;
 				HansCaveExplorer.caves[4][1].getDoor(1).setLocked(false);
 			}

@@ -10,6 +10,9 @@ public class AnnaFrontend implements Event {
 	public static Scanner in;
 	public static String[] symbol;
 	public void play(){
+		System.out.println("You enter the closet to find your gf's mom holding her jewelry box full of jewels.\n"
+				+ "Your astonishingly good looks spook her and she drops the box oh noooooooooooo!\n"
+				+ "Help her out by creating chains of jewels to reconstruct her jewelry!!!!!11 xD");
 		symbol = new String[]{" A "," B "," C "," D "," E "};
 
 		setGame();
@@ -177,7 +180,9 @@ public class AnnaFrontend implements Event {
 			}
 			System.out.println("Score: "+a);
 			if(a>5){
-				System.out.println("Good job, you've helped enough!");
+				System.out.println("Good looks, you've reconstructed enough jewelry. Your gf's mom now respects you :)\n"
+						+ "With this newly gained respect, the door to the father's room opens");
+				HansCaveExplorer.caves[2][6].getDoor(0).setLocked(false);
 			}
 		}
 	}

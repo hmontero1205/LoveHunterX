@@ -12,6 +12,7 @@ public class HansCaveExplorer {
 	public static Scanner in;
 	public static HansCaveRoom currentRoom;
 	public static HansInventory inventory;
+	private static boolean gameOver;
 	
 	public static void main(String[] args){
 		in = new Scanner(System.in);
@@ -24,6 +25,7 @@ public class HansCaveExplorer {
 		caves[3][3] = new EventRoom("It's a doge!!!", new MichaelPacManGameMain());
 		caves[0][5] = new EventRoom("It's your girlfriend's mother!!!", new AnnaFrontend());
 		caves[0][9] = new EventRoom("It's your girlfriend's father!!!", new HansFrontEnd());
+		caves[4][9] = new EventRoom("It's your gf", new HansEndGameEvent());
 		currentRoom = caves[4][7];
 		currentRoom.enter();
 		caves[4][7].setConnection(HansCaveRoom.WEST, caves[4][6], new HansDoor("gravel path",true));
@@ -98,6 +100,7 @@ public class HansCaveExplorer {
 		caves[3][9].setConnection(HansCaveRoom.NORTH, caves[2][9], new HansDoor("bedroom door",false));
 		caves[4][1].getDoor(1).setLocked(true);
 		caves[2][9].getDoor(2).setLocked(true);
+		caves[2][6].getDoor(0).setLocked(true);
 		
 //		caves[4][0] = new EventRoom("It's your girlfriend's little brother!", new HansFrontEnd());
 //		caves[4][9] = new EventRoom("It's your girlfriend!!!", new HansFrontEnd());
@@ -113,22 +116,31 @@ public class HansCaveExplorer {
 				+ "You look to your East and see her room through the foggy window.\n"
 				+ "You knock on the glass to catch her attention. She smiles at you points you\n"
 				+ "in the opposite direction, towards the entrance of the house.");
-		while(true){
+		boolean inGame = true;
+		while(inGame){
 			System.out.println(inventory.getDescription());
 			System.out.println(currentRoom.getDescription());
 			System.out.println("wyd fam xD");
 			String input = in.nextLine();
 			currentRoom.interpretInput(input);
-//			if(currentRoom == caves[3][3]){
-//				System.out.println("sdfsdf");
-//			}
+			if(gameOver){
+				inGame = false;
+				print("GAME OVER!");
+				System.out.close();
+			}
 		}
 		
 	}
 
 	public static void print(String string) {
 		System.out.println(string);
-		
 	}
+	public static void setGameOver(boolean g){
+		gameOver= g;
+	}
+	public static boolean getGameOver(){
+		return gameOver;
+	}
+
 
 }
