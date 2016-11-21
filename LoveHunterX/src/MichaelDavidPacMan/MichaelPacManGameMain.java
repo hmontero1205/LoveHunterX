@@ -3,7 +3,7 @@ package MichaelDavidPacMan;
 import java.util.Scanner;
 import MichaelDavidPacMan.MichaelCellRoom;
 
-public class pacManGameMain {
+public class MichaelPacManGameMain {
 
 	//things we need:
 	//	a default grid - I got this, any questions feel free to email me. mli8855@bths.edu
@@ -28,9 +28,8 @@ public class pacManGameMain {
 //					System.out.print("F");
 //				}
 			}
-//			System.out.println();.
+//			System.out.println();
 		}
-		printMaze();
 	}
 
 	public static void printMaze(){
@@ -45,6 +44,9 @@ public class pacManGameMain {
 				}else{
 					if(cells[row][col].getBFrag()){
 						grid[row][col]="O";
+					}
+					if(row == MichaelCellRoom.currentRoomRow && col == MichaelCellRoom.currentRoomCol){
+						grid[row][col] = "!";
 					}
 				}
 			}

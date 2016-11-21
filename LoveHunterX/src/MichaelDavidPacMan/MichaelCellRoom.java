@@ -22,7 +22,7 @@ public class MichaelCellRoom {
 		//chance room is accessible 	
 		this.accessible = genCondition(8,10);
 		if (accessible){
-			//if accessible, probability of getting a bone frag..
+			//if accessible, probability of getting a bone frag.
 			this.boneFrag = genCondition(3,8);
 		}
 	}
