@@ -102,7 +102,7 @@ public class ShohebBackEnd {
 		}
 		return 0;
 	}
-
+//
 	public static void updateBooleanArray(int row, int col) {
 		//isHidden[]
 		

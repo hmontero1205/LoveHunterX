@@ -13,7 +13,7 @@ public class HansFrontEnd implements Event{
 		//print2DIntArray(ShohebBackEnd.count);
 		//displayBoard();
 	}
-	
+	//
 	private static void displayBoard() {
 		//for(int row = 0; row < ShohebBackEnd.)
 	}
