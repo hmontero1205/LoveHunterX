@@ -3,14 +3,20 @@ package ExplorerMain;
 public class Door {
 	private boolean locked;
 	private boolean open;
+	private boolean isRoom;
 	private String description;
 	private String details;
 	
-	public Door(){
+	public Door(String p,boolean r){
 		locked = false;
 		open = true;
-		description = "passage";
+		description = p;
 		details = "";
+		isRoom = r;
+	}
+	
+	public boolean getIsRoom(){
+		return isRoom;
 	}
 	
 	public void setLocked(boolean b){
