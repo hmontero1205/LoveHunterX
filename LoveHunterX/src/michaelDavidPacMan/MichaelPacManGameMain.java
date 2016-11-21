@@ -59,6 +59,7 @@ public class MichaelPacManGameMain implements Event {
 				grid[row][col]=" ";
 				if(!(cells[row][col].getAccessible())){
 					grid[row][col]="X";
+					
 				}else{
 					if(cells[row][col].getBFrag()){
 						grid[row][col]="O";
