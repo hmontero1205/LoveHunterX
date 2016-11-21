@@ -1,7 +1,7 @@
 package MichaelDavidPacMan;
 
 import java.util.Scanner;
-import MichaelDavidPacMan.CellRoom;
+import MichaelDavidPacMan.MichaelCellRoom;
 
 public class pacManGameMain {
 
@@ -11,16 +11,16 @@ public class pacManGameMain {
 	//	dogs
 	//	pieces of bones
 
-	public static CellRoom cells[][];
+	public static MichaelCellRoom cells[][];
 	public static Scanner in;
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		in = new Scanner(System.in);
-		cells = new CellRoom[8][8];
+		cells = new MichaelCellRoom[8][8];
 		for(int r=0; r<cells.length;r++){
 			for(int c=0;c<cells[r].length;c++){
-				cells[r][c]= new CellRoom();
+				cells[r][c]= new MichaelCellRoom();
 				if(cells[r][c].getAccessible()){
 					System.out.print("T");
 				}else{
@@ -34,21 +34,41 @@ public class pacManGameMain {
 
 	public static void printMaze(){
 		String[][] grid = new String[cells.length][cells[0].length];
+		//X = not accessible
+		//O = bone frag here
 		for (int row =0; row<grid.length; row++){
 			for(int col = 0; col < grid[row].length; col ++){
-				if(cells[row][col].getAccessible()){
-					grid[row][col]="| ";
+				grid[row][col]=" ";
+				if(!(cells[row][col].getAccessible())){
+					grid[row][col]="X";
 				}else{
-					grid[row][col]="|X";
+					if(cells[row][col].getBFrag()){
+						grid[row][col]="O";
+					}
 				}
 			}
 		}
 		
-		for (int i = 0; i < grid.length; i++){
-			for(int j = 0; j < grid[i].length; j++){
-				System.out.print(grid[i][j]);
+		//upper border
+		for (int col = 0; col < grid[0].length; col++){
+			System.out.print(" _");
+		}
+		System.out.println();
+		
+		for (int row = 0; row < grid.length; row++){
+			for(int col = 0; col < grid[row].length; col++){
+				System.out.print("|");
+				System.out.print(grid[row][col]);
+				if (col == grid[row].length -1){
+					System.out.print("|");
+				}
 			}
 			System.out.println();
+		}
+		
+		//bottom border
+		for (int col = 0; col < grid[0].length; col++){
+			System.out.print(" ¯");
 		}
 	}
 
@@ -81,7 +101,6 @@ public class pacManGameMain {
 		for (int i = 0; i < grid.length; i++){
 			for(int j = 0; j < grid[i].length; j++){
 				System.out.print(grid[i][j]);
-
 			}
 			System.out.println();
 		}

@@ -1,6 +1,6 @@
 package MichaelDavidPacMan;
 
-public class CellRoom {
+public class MichaelCellRoom {
 	private boolean accessible;
 	private boolean boneFrag;
 	
@@ -15,12 +15,12 @@ public class CellRoom {
 		return test[rand];
 	}
 
-	public CellRoom(){
+	public MichaelCellRoom(){
 		//chance room is accessible 	
 		this.accessible = genCondition(8,10);
 		if (accessible){
 			//if accessible, probability of getting a bone frag.
-			this.boneFrag = genCondition(2,3);
+			this.boneFrag = genCondition(3,8);
 		}
 	}
 	
