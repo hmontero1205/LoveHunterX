@@ -1,7 +1,8 @@
-package MichaelDavidPacMan;
+package michaelDavidPacMan;
 
 import java.util.Scanner;
-import MichaelDavidPacMan.MichaelCellRoom;
+
+import michaelDavidPacMan.MichaelCellRoom;
 
 public class MichaelPacManGameMain {
 

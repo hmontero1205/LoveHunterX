@@ -1,4 +1,4 @@
-package MichaelDavidPacMan;
+package michaelDavidPacMan;
 
 public class MichaelCellRoom {
 	public boolean accessible;

@@ -1,8 +1,8 @@
-package ShohebHansMineSweeper;
+package shohebHansMineSweeper;
 
 import java.util.Scanner;
 
-import ExplorerMain.Event;
+import hansExplorerMain.Event;
 
 public class HansFrontEnd implements Event{
 	

@@ -1,4 +1,4 @@
-package ShohebHansMineSweeper;
+package shohebHansMineSweeper;
 
 public class ShohebBackEnd {
 	public static int[][] board;

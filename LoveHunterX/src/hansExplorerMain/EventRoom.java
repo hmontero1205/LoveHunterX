@@ -1,6 +1,6 @@
-package ExplorerMain;
+package hansExplorerMain;
 
-public class EventRoom extends CaveRoom {
+public class EventRoom extends HansCaveRoom {
 	
 	private Event event;
 	private boolean eventOccurred;

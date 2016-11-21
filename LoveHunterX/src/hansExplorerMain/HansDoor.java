@@ -1,13 +1,13 @@
-package ExplorerMain;
+package hansExplorerMain;
 
-public class Door {
+public class HansDoor {
 	private boolean locked;
 	private boolean open;
 	private boolean isRoom;
 	private String description;
 	private String details;
 	
-	public Door(String p,boolean r){
+	public HansDoor(String p,boolean r){
 		locked = false;
 		open = true;
 		description = p;

@@ -1,14 +1,14 @@
-package ExplorerMain;
+package hansExplorerMain;
 
-public class CaveRoom {
+public class HansCaveRoom {
 
 	private String description;
 	private String directions;
 	private String contents;
 	private String defaultContents;
 
-	private CaveRoom[] borderingRooms;
-	private Door[] doors; 
+	private HansCaveRoom[] borderingRooms;
+	private HansDoor[] doors; 
 
 	public static final int NORTH = 0;
 	public static final int EAST = 1;
@@ -16,13 +16,13 @@ public class CaveRoom {
 	public static final int WEST = 3;
 
 
-	public CaveRoom(String description){
+	public HansCaveRoom(String description){
 		this.description = description;
 		setDefaultContents(" ");
 		contents = defaultContents;
 		
-		borderingRooms = new CaveRoom[4];
-		doors = new Door[4];
+		borderingRooms = new HansCaveRoom[4];
+		doors = new HansDoor[4];
 //		for(int i = 0 ; i < borderingRooms.length; i++){
 //			borderingRooms[i] = null;
 //			doors[i] = null;
@@ -35,7 +35,7 @@ public class CaveRoom {
 		contents = c;
 	}
 	
-	public Door getDoor(int dir){
+	public HansDoor getDoor(int dir){
 		return doors[dir];
 	}
 	protected void setDirections() {
@@ -77,7 +77,7 @@ public class CaveRoom {
 	}
 	
 
-	public void addRoom(int direction, CaveRoom anotherRoom, Door door){
+	public void addRoom(int direction, HansCaveRoom anotherRoom, HansDoor door){
 		borderingRooms[direction] = anotherRoom;
 		doors[direction] = door;
 		setDirections();
@@ -90,7 +90,7 @@ public class CaveRoom {
 	 * @param anotherRoom
 	 * @param door
 	 */
-	public void setConnection(int direction, CaveRoom anotherRoom, Door door){
+	public void setConnection(int direction, HansCaveRoom anotherRoom, HansDoor door){
 		addRoom(direction, anotherRoom, door);
 		anotherRoom.addRoom(oppositeDirection(direction), this, door);
 	}
@@ -118,7 +118,7 @@ public class CaveRoom {
 	public void interpretInput(String input) {
 		while(!isValid(input)){
 			System.out.println("You can only enter 'w', 'a', 's', 'd'");
-			input = CaveExplorer.in.nextLine();
+			input = HansCaveExplorer.in.nextLine();
 		}
 		String[] keys = {"w","d","s","a"};
 		int indexFound = -1;
@@ -132,10 +132,10 @@ public class CaveRoom {
 	}
 	public void goToRoom(int direction){
 		if(borderingRooms[direction]!=null && !doors[direction].isLocked()){
-			CaveExplorer.currentRoom.leave();
-			CaveExplorer.currentRoom = borderingRooms[direction];
-			CaveExplorer.currentRoom.enter();
-			CaveExplorer.inventory.updateMap();
+			HansCaveExplorer.currentRoom.leave();
+			HansCaveExplorer.currentRoom = borderingRooms[direction];
+			HansCaveExplorer.currentRoom.enter();
+			HansCaveExplorer.inventory.updateMap();
 		}
 		else{
 			System.out.println("This door is locked! You need the key man!!");

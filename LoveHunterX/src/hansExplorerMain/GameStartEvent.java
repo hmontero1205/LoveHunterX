@@ -1,4 +1,4 @@
-package ExplorerMain;
+package hansExplorerMain;
 
 public class GameStartEvent implements Event {
 
@@ -14,19 +14,19 @@ public class GameStartEvent implements Event {
 
 	public void play() {
 		readSequence(SEQ_1);
-		CaveExplorer.print("Will you help us?");
-		while(CaveExplorer.in.nextLine().indexOf("yes") < 0){
-			CaveExplorer.print("Pls say yes. I beg you!");
+		HansCaveExplorer.print("Will you help us?");
+		while(HansCaveExplorer.in.nextLine().indexOf("yes") < 0){
+			HansCaveExplorer.print("Pls say yes. I beg you!");
 		}
 		readSequence(SEQ_2);
-		CaveExplorer.inventory.setMap(true);
+		HansCaveExplorer.inventory.setMap(true);
 	}
 
 	public static void readSequence(String[] seq) {
 		for(String s:seq){
-			CaveExplorer.print(s);
-			CaveExplorer.print(" - - - Press enter - - -");
-			CaveExplorer.in.nextLine();
+			HansCaveExplorer.print(s);
+			HansCaveExplorer.print(" - - - Press enter - - -");
+			HansCaveExplorer.in.nextLine();
 		}
 		
 	}
