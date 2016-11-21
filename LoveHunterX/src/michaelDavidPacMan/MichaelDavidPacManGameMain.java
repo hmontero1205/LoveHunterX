@@ -5,7 +5,7 @@ import michaelDavidPacMan.MichaelCellRoom;
 import hansExplorerMain.Event;
 import hansExplorerMain.HansCaveExplorer;
 
-public class MichaelPacManGameMain implements Event {
+public class MichaelDavidPacManGameMain implements Event {
 
 	//things we need:
 	//	a default grid - I got this, any questions feel free to email me. mli8855@bths.edu
@@ -17,7 +17,7 @@ public class MichaelPacManGameMain implements Event {
 	public static Scanner in;
 	public static boolean inPacGame=true;
 	
-	public MichaelPacManGameMain(){
+	public MichaelDavidPacManGameMain(){
 		
 	}
 
@@ -41,6 +41,18 @@ public class MichaelPacManGameMain implements Event {
 			printMaze();
 			String input = in.nextLine();
 			MichaelPacMan.interpretInput(input);
+			DavidEnemy.updateEnemyMovement(1);
+			DavidEnemy.updateEnemyMovement(2);
+			if(DavidEnemy.checkLoseCondition(MichaelCellRoom.currentEnemyOneRoomRow, MichaelCellRoom.currentEnemyOneRoomCol)){
+				System.out.println("You lose, the vicious doge got to you before you could get all the bone fragments");
+				inPacGame = false;
+				//here is where you would add reset or something idk
+			}
+			if(DavidEnemy.checkLoseCondition(MichaelCellRoom.currentEnemyTwoRoomRow , MichaelCellRoom.currentEnemyTwoRoomCol)){
+				System.out.println("You lose, the vicious doge got to you before you could get all the bone fragments");
+				inPacGame = false;
+				//here is where you would add reset or something idk this is just for the second pupper.
+			}
 			MichaelPacMan.getBoneFrags();
 			if(MichaelPacMan.getNumCollected()>=10){
 				System.out.println("You fed the doge and now doge respects you. With that, doge gives you the key to the house.");
@@ -65,6 +77,12 @@ public class MichaelPacManGameMain implements Event {
 					}
 					if(row == MichaelCellRoom.currentRoomRow && col == MichaelCellRoom.currentRoomCol){
 						grid[row][col] = "!";
+					}
+					if(row == MichaelCellRoom.currentEnemyOneRoomRow && col == MichaelCellRoom.currentEnemyOneRoomCol){
+						grid[row][col] = "D";
+					}
+					if(row == MichaelCellRoom.currentEnemyTwoRoomRow && col == MichaelCellRoom.currentEnemyTwoRoomCol){
+						grid[row][col] = "D";
 					}
 				}
 			}
@@ -91,9 +109,8 @@ public class MichaelPacManGameMain implements Event {
 
 		//bottom border
 		for (int col = 0; col < grid[0].length; col++){
-			System.out.print(" ¯");
+			System.out.print(" Â¯");
 		}
-		DavidEnemy.insertEnemy(DavidEnemy.enemyRow,DavidEnemy.enemyCol);
 		System.out.println("\n You have collected " + MichaelPacMan.getNumCollected() + " bone fragments.");
 	}
 
