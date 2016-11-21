@@ -25,7 +25,7 @@ public class HansCaveExplorer {
 		caves[3][3] = new EventRoom("It's a doge!!!", new MichaelPacManGameMain());
 		caves[0][5] = new EventRoom("It's your girlfriend's mother!!!", new AnnaFrontend());
 		caves[0][9] = new EventRoom("It's your girlfriend's father!!!", new HansFrontEnd());
-		caves[4][9] = new EventRoom("It's your gf", new HansEndGameEvent());
+		caves[4][9] = new EventRoom("It's your gf", new HansEndGameEvent()); 
 		currentRoom = caves[4][7];
 		currentRoom.enter();
 		caves[4][7].setConnection(HansCaveRoom.WEST, caves[4][6], new HansDoor("gravel path",true));

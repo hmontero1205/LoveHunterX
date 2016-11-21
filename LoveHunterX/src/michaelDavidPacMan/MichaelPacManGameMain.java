@@ -35,7 +35,7 @@ public class MichaelPacManGameMain implements Event {
 				//					System.out.print("F");
 				//				}
 			}
-			//			System.out.println();
+						//System.out.println();
 		}
 		while(inPacGame){
 			printMaze();
