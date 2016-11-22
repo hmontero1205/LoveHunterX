@@ -44,15 +44,30 @@ public class HansFrontEnd implements Event{
 					System.out.print(row + " ");
 				}
 				else{
-					if(!ShohebBackEnd.isNotHidden[row][col]){
-						System.out.print(" _ ");
-					}
-					else{
-						if(ShohebBackEnd.board[row][col] == 1){
-							System.out.print(" " + ShohebBackEnd.count[row][col]);
+					if(col < 10){
+						if(!ShohebBackEnd.isNotHidden[row][col]){
+							System.out.print(" _ ");
 						}
 						else{
-							System.out.print(" X");
+							if(ShohebBackEnd.board[row][col] == 1){
+								System.out.print(" " + ShohebBackEnd.count[row][col]);
+							}
+							else{
+								System.out.print(" X");
+							}
+						}
+					}
+					else{
+						if(!ShohebBackEnd.isNotHidden[row][col]){
+							System.out.print("  _ ");
+						}
+						else{
+							if(ShohebBackEnd.board[row][col] == 1){
+								System.out.print("  " + ShohebBackEnd.count[row][col]);
+							}
+							else{
+								System.out.print(" X ");
+							}
 						}
 					}
 				}
@@ -65,25 +80,31 @@ public class HansFrontEnd implements Event{
 	public static void getUserResponse(){
 		System.out.println("Please select a row");
 		String row = in.nextLine();
-		while(!isValid(row, ShohebBackEnd.board.length-1)){
-			System.out.println("Please input a number between 0 and " + (ShohebBackEnd.board.length-1) + " thx");
-			row = in.nextLine();
-		}
-		int r = Integer.parseInt(row);
-		System.out.println("Please select a column");
-		String column = in.nextLine();
-		while(!isValid(column, ShohebBackEnd.board[0].length-1)){
-			System.out.println("Please input a number between 0 and " + (ShohebBackEnd.board[0].length-1) + " thx");
-			column = in.nextLine();
-		}
-		int col = Integer.parseInt(column);
-		if(ShohebBackEnd.isNotHidden[r][col]){
-			System.out.println("You must pick a space that isn't already visible!");
-			getUserResponse();
-		}
+		if(row.equals("win")){
+			coords[0] = 99;
+			coords[1] = 99;
+		} //cheat code 
 		else{
-			coords[0] = r;
-			coords[1] = col;
+			while(!isValid(row, ShohebBackEnd.board.length-1)){
+				System.out.println("Please input a number between 0 and " + (ShohebBackEnd.board.length-1) + " thx");
+				row = in.nextLine();
+			}
+			int r = Integer.parseInt(row);
+			System.out.println("Please select a column");
+			String column = in.nextLine();
+			while(!isValid(column, ShohebBackEnd.board[0].length-1)){
+				System.out.println("Please input a number between 0 and " + (ShohebBackEnd.board[0].length-1) + " thx");
+				column = in.nextLine();
+			}
+			int col = Integer.parseInt(column);
+			if(ShohebBackEnd.isNotHidden[r][col]){
+				System.out.println("You must pick a space that isn't already visible!");
+				getUserResponse();
+			}
+			else{
+				coords[0] = r;
+				coords[1] = col;
+			}
 		}
 	}
 	
