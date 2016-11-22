@@ -114,7 +114,7 @@ public class MichaelPacManGameMain implements Event {
 
 		//bottom border
 		for (int col = 0; col < grid[0].length; col++){
-			System.out.print(" Â¯");
+			System.out.print(" ¯");
 		}
 		System.out.println("\n You have collected " + MichaelPacMan.getNumCollected() + " bone fragments.");
 	}
