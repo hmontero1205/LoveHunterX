@@ -33,7 +33,7 @@ public class MichaelPacMan {
 					System.out.println("Can't move out of the maze :)");
 				}
 				break;
-			case "d": //moveright
+			case "d": //moveright.
 				if(MichaelCellRoom.currentRoomCol<MichaelPacManGameMain.cells[0].length-1 && checkIfAccessible(0,1)){
 					MichaelCellRoom.currentRoomCol++;
 				}else{

@@ -7,7 +7,7 @@ public class MichaelCellRoom {
 	public static int currentRoomCol = 0;
 
 	private static boolean genCondition(int desireable, int total){
-		//random generate a true/false statement based on parameter.
+		//random generate a true/false statement based on parameter..
 		//ex: i want a 1/4 chance to get a true.
 		boolean[] test = new boolean[total];
 		for(int i = 0; i<desireable; i++){

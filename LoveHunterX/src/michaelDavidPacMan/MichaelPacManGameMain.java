@@ -11,7 +11,7 @@ public class MichaelPacManGameMain implements Event {
 	//	a default grid - I got this, any questions feel free to email me. mli8855@bths.edu
 	//	a pacman - This too.
 	//	dogs
-	//	pieces of bones - can be done /w a counter.
+	//	pieces of bones - can be done /w a counter...
 
 	public static MichaelCellRoom cells[][];
 	public static Scanner in;
