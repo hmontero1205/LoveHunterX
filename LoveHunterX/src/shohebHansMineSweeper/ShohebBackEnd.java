@@ -14,7 +14,7 @@ public class ShohebBackEnd {
 				qIndex = (int)(Math.random()*questionAnswers.length);
 			}
 			availableQuestions[qIndex] = true;
-			System.out.println(questionAnswers[qIndex][0]);
+			System.out.println("Dad: "+questionAnswers[qIndex][0]);
 			HansFrontEnd.getUserResponse();
 			if(HansFrontEnd.coords[0] == 99){
 				HansFrontEnd.winGame();
@@ -23,14 +23,14 @@ public class ShohebBackEnd {
 			int boardSpace = board[HansFrontEnd.coords[0]][HansFrontEnd.coords[1]];
 			updateBooleanArray(HansFrontEnd.coords[0], HansFrontEnd.coords[1]);
 			HansFrontEnd.displayBoard();
-			System.out.println(questionAnswers[qIndex][boardSpace]);
+			System.out.println("You: " +questionAnswers[qIndex][boardSpace]);
 			if(boardSpace == 2){
-				System.out.println(questionAnswers[qIndex][4]);
+				System.out.println("Dad: "+questionAnswers[qIndex][4]);
 				HansFrontEnd.loseGame();
 				break;
 			}
 			else{
-				System.out.println(questionAnswers[qIndex][3]);
+				System.out.println("Dad: "+questionAnswers[qIndex][3]);
 			}
 		}
 		if(i == totalQuestions){

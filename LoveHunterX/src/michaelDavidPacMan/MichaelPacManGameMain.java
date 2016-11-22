@@ -42,12 +42,12 @@ public class MichaelPacManGameMain implements Event {
 			if(DavidEnemy.checkLoseCondition(DavidEnemy.currentEnemyOneRoomRow, DavidEnemy.currentEnemyOneRoomCol)){
 				System.out.println("You lose, the vicious doge got to you before you could get all the bone fragments");
 				inPacGame = false;
-				//here is where you would add reset or something idk
+				HansCaveExplorer.setGameOver(true);
 			}
 			if(DavidEnemy.checkLoseCondition(DavidEnemy.currentEnemyTwoRoomRow , DavidEnemy.currentEnemyTwoRoomCol)){
 				System.out.println("You lose, the vicious doge got to you before you could get all the bone fragments");
 				inPacGame = false;
-				//here is where you would add reset or something idk this is just for the second pupper.
+				HansCaveExplorer.setGameOver(true);
 			}
 			MichaelPacMan.getBoneFrags();
 			if(MichaelPacMan.getNumCollected()>=10){
