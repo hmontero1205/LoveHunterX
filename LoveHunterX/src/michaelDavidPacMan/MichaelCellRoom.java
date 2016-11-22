@@ -5,11 +5,6 @@ public class MichaelCellRoom {
 	public boolean boneFrag;
 	public static int currentRoomRow = 0;
 	public static int currentRoomCol = 0;
-	public static int currentEnemyOneRoomRow = MichaelDavidPacManGameMain.cells.length-1;
-	public static int currentEnemyTwoRoomRow = MichaelDavidPacManGameMain.cells.length-2;
-	public static int currentEnemyOneRoomCol = MichaelDavidPacManGameMain.cells[0].length-1;
-	public static int currentEnemyTwoRoomCol = MichaelDavidPacManGameMain.cells[0].length-2;
-	public String pacLocated ="";
 
 	private static boolean genCondition(int desireable, int total){
 		//random generate a true/false statement based on parameter.
