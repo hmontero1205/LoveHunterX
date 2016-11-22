@@ -44,15 +44,30 @@ public class HansFrontEnd implements Event{
 					System.out.print(row + " ");
 				}
 				else{
-					if(!ShohebBackEnd.isNotHidden[row][col]){
-						System.out.print(" _ ");
-					}
-					else{
-						if(ShohebBackEnd.board[row][col] == 1){
-							System.out.print(" " + ShohebBackEnd.count[row][col]);
+					if(col < 10){
+						if(!ShohebBackEnd.isNotHidden[row][col]){
+							System.out.print(" _ ");
 						}
 						else{
-							System.out.print(" X");
+							if(ShohebBackEnd.board[row][col] == 1){
+								System.out.print(" " + ShohebBackEnd.count[row][col]);
+							}
+							else{
+								System.out.print(" X");
+							}
+						}
+					}
+					else{
+						if(!ShohebBackEnd.isNotHidden[row][col]){
+							System.out.print("  _ ");
+						}
+						else{
+							if(ShohebBackEnd.board[row][col] == 1){
+								System.out.print("  " + ShohebBackEnd.count[row][col]);
+							}
+							else{
+								System.out.print(" X ");
+							}
 						}
 					}
 				}
