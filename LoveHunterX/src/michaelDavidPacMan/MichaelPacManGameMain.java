@@ -31,12 +31,14 @@ public class MichaelPacManGameMain implements Event {
 				//					System.out.print("F");
 				//				}
 			}
-						//System.out.println();
+			//System.out.println();
 		}
 		while(inPacGame){
 			printMaze();
 			String input = in.nextLine();
 			MichaelPacMan.interpretInput(input);
+			MichaelPacMan.getBoneFrags();
+			//David's code
 			DavidEnemy.updateEnemyMovement(1);
 			DavidEnemy.updateEnemyMovement(2);
 			if(DavidEnemy.checkLoseCondition(DavidEnemy.currentEnemyOneRoomRow, DavidEnemy.currentEnemyOneRoomCol)){
@@ -49,7 +51,7 @@ public class MichaelPacManGameMain implements Event {
 				inPacGame = false;
 				HansCaveExplorer.setGameOver(true);
 			}
-			MichaelPacMan.getBoneFrags();
+			//David's code ends here.
 			if(MichaelPacMan.getNumCollected()>=10){
 				System.out.println("You fed the doge and now doge respects you. With that, doge gives you the key to the house.");
 				inPacGame=false;
@@ -71,15 +73,22 @@ public class MichaelPacManGameMain implements Event {
 					if(cells[row][col].getBFrag()){
 						grid[row][col]="O";
 					}
-					if(row == MichaelCellRoom.currentRoomRow && col == MichaelCellRoom.currentRoomCol){
-						grid[row][col] = "!";
-					}
+					//David's code
 					if(row == DavidEnemy.currentEnemyOneRoomRow && col == DavidEnemy.currentEnemyOneRoomCol){
-						grid[row][col] = "D";
+						System.out.println("The dog1 row is " + DavidEnemy.getDog1Row());
+						System.out.println("The dog1 col is " + DavidEnemy.getDog1Col());
+						grid[row][col] = "%";
 					}
 					if(row == DavidEnemy.currentEnemyTwoRoomRow && col == DavidEnemy.currentEnemyTwoRoomCol){
-						grid[row][col] = "D";
+						System.out.println("The dog2 row is " + DavidEnemy.getDog2Row());
+						System.out.println("The dog2 col is " + DavidEnemy.getDog2Col());
+						grid[row][col] = "%";
 					}
+					//David's code end here.
+				}
+				//locate pacman
+				if(row == MichaelCellRoom.currentRoomRow && col == MichaelCellRoom.currentRoomCol){
+					grid[row][col] = "!";
 				}
 			}
 		}
@@ -105,7 +114,7 @@ public class MichaelPacManGameMain implements Event {
 
 		//bottom border
 		for (int col = 0; col < grid[0].length; col++){
-			System.out.print(" ¯");
+			System.out.print(" Â¯");
 		}
 		System.out.println("\n You have collected " + MichaelPacMan.getNumCollected() + " bone fragments.");
 	}
