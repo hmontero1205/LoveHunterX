@@ -2,9 +2,10 @@ package hansExplorerMain;
 
 import java.util.Scanner;
 
-import annaDanielBejeweled.AnnaFrontend;
-import michaelDavidPacMan.MichaelPacManGameMain;
-import shohebHansMineSweeper.HansFrontEnd;
+import annaDanielBejeweled.*;
+import hansConnectFour.*;
+import michaelDavidPacMan.*;
+import shohebHansMineSweeper.*;
 
 public class HansCaveExplorer {
 	
@@ -25,7 +26,8 @@ public class HansCaveExplorer {
 		caves[3][3] = new EventRoom("It's a doge!!!", new MichaelPacManGameMain());
 		caves[0][5] = new EventRoom("It's your girlfriend's mother!!!", new AnnaFrontend());
 		caves[0][9] = new EventRoom("It's your girlfriend's father!!!", new HansFrontEnd());
-		caves[4][9] = new EventRoom("It's your gf", new HansEndGameEvent()); 
+		caves[4][9] = new EventRoom("It's your gf!", new HansEndGameEvent()); 
+		caves[4][0] = new EventRoom("It's your gf's lil bro!", new HansConnectFourFront());
 		currentRoom = caves[4][7];
 		currentRoom.enter();
 		caves[4][7].setConnection(HansCaveRoom.WEST, caves[4][6], new HansDoor("gravel path",true));
@@ -99,6 +101,7 @@ public class HansCaveExplorer {
 		caves[3][8].setConnection(HansCaveRoom.SOUTH, caves[4][8], new HansDoor("bedroom tile",true));
 		caves[3][9].setConnection(HansCaveRoom.NORTH, caves[2][9], new HansDoor("bedroom door",false));
 		caves[4][1].getDoor(1).setLocked(true);
+		caves[3][1].getDoor(0).setLocked(true);
 		caves[2][9].getDoor(2).setLocked(true);
 		caves[2][6].getDoor(0).setLocked(true);
 		
