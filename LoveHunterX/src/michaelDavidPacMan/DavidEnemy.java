@@ -112,6 +112,7 @@ public class DavidEnemy {
 	}
 	
 	public static boolean checkLoseCondition(int currentRow, int currentCol){
+		//gotta debug this.
 		if((currentRow + 1) == MichaelCellRoom.currentRoomRow){
 			return true;
 		}
