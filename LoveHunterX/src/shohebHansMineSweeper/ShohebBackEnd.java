@@ -16,6 +16,10 @@ public class ShohebBackEnd {
 			availableQuestions[qIndex] = true;
 			System.out.println(questionAnswers[qIndex][0]);
 			HansFrontEnd.getUserResponse();
+			if(HansFrontEnd.coords[0] == 99){
+				HansFrontEnd.winGame();
+				break;
+			}
 			int boardSpace = board[HansFrontEnd.coords[0]][HansFrontEnd.coords[1]];
 			updateBooleanArray(HansFrontEnd.coords[0], HansFrontEnd.coords[1]);
 			HansFrontEnd.displayBoard();
