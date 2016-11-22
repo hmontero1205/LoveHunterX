@@ -7,6 +7,21 @@ public class DavidEnemy {
 	public static int currentEnemyOneRoomCol = MichaelPacManGameMain.cells[0].length-1;
 	public static int currentEnemyTwoRoomCol = MichaelPacManGameMain.cells[0].length-2;
 	
+	public static int getDog1Row(){
+		return currentEnemyOneRoomRow;
+	}
+	
+	public static int getDog1Col(){
+		return currentEnemyOneRoomCol;
+	}
+	
+	public static int getDog2Row(){
+		return currentEnemyTwoRoomRow;
+	}
+	
+	public static int getDog2Col(){
+		return currentEnemyTwoRoomCol;
+	}
 	public static void updateEnemyMovement(int enemyNum){
 		int randDirec = (int) ((Math.random() * 4) + 1);
 		
