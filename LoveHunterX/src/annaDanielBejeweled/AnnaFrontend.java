@@ -111,6 +111,10 @@ public class AnnaFrontend implements Event {
 		}catch(NumberFormatException nfe){
 			return false;
 		}
+		int num = Integer.parseInt(input);
+		if(num > 9 || num < 0){
+			return false;
+		}
 		return true;
 }
 	public static void ask(){
@@ -120,43 +124,41 @@ public class AnnaFrontend implements Event {
 			String x = in.nextLine();
 			if(x.equals("hax")){
 				a=10000000;
+				endGame();
 			}
 			else{
-				if(!isValid(x)){
-					System.out.println("Invalid. Start again.");
-					ask();
+				while(!isValid(x)){
+					System.out.println("Invalid. Select a row.");
+					x = in.nextLine();
 				}
 				int row =  Integer.parseInt(x);
 				
-				System.out.println("which column?");
+				System.out.println
+				("which column?");
 				String y = in.nextLine();
-				if(!isValid(y)){
-					System.out.println("Invalid. Start again");
-					ask();
+				while(!isValid(y)){
+					System.out.println("Invalid. Select a column");
+					y=in.nextLine();
 				}
 				int col =  Integer.parseInt(y);
 				
 				System.out.println("which direction?");
 				String dir = in.nextLine();	
-				if(row==0 && dir.equals("w")){
-					System.out.println("You can't do that.");
-					ask();
+				while(row==0 && dir.equals("w")){
+					System.out.println("Pick a direction that works.");
+					dir = in.nextLine();
 				}
-				if(row==arr2d.length-1 && dir.equals("s")){
-					System.out.println("You can't do that.");
-					ask();
+				while(row==arr2d.length-1 && dir.equals("s")){
+					System.out.println("Pick a direction that works.");
+					dir = in.nextLine();
 				}
-				if(col==0 && dir.equals("a")){
-					System.out.println("You can't do that.");
-					ask();
+				while(col==0 && dir.equals("a")){
+					System.out.println("Pick a direction that works.");
+					dir = in.nextLine();
 				}
-				if(col==arr2d[0].length-1 && dir.equals("d")){
-					System.out.println("You can't do that.");
-					ask();
-				}
-				if(row>arr2d.length-1 || col>arr2d[0].length-1){
-					System.out.println("Invalid number. Start again.");
-					ask();
+				while(col==arr2d[0].length-1 && dir.equals("d")){
+					System.out.println("Pick a direction that works.");
+					dir = in.nextLine();
 				}
 				swap(arr2d, row,col,dir);
 				for(int i = 0;i<arr2d.length;i++){
@@ -177,14 +179,17 @@ public class AnnaFrontend implements Event {
 					}
 				}
 				printPic(arr2d);
-			}
-			System.out.println("Score: "+a);
-			if(a>5){
-				System.out.println("Good looks, you've reconstructed enough jewelry. Your gf's mom now respects you :)\n"
-						+ "With this newly gained respect, the door to the father's room opens");
-				HansCaveExplorer.caves[2][6].getDoor(0).setLocked(false);
+				System.out.println("Score: "+a);
+				if(a>4){
+					endGame();
+				}
 			}
 		}
+	}
+	public static void endGame(){
+		System.out.println("Good looks, you've reconstructed enough jewelry. Your gf's mom now respects you :)\n"
+				+ "With this newly gained respect, the door to the father's room opens");
+		HansCaveExplorer.caves[2][6].getDoor(0).setLocked(false);
 	}
 
 
