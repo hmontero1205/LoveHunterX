@@ -3,7 +3,7 @@ package hansExplorerMain;
 import java.util.Scanner;
 
 import annaDanielBejeweled.AnnaFrontend;
-import michaelDavidPacMan.MichaelDavidPacManGameMain;
+import michaelDavidPacMan.MichaelPacManGameMain;
 import shohebHansMineSweeper.HansFrontEnd;
 
 public class HansCaveExplorer {
@@ -22,7 +22,7 @@ public class HansCaveExplorer {
 				caves[r][c] = new HansCaveRoom("You're at coords ("+r+","+c+")!");
 			}
 		}
-		caves[3][3] = new EventRoom("It's a doge!!!", new MichaelDavidPacManGameMain());
+		caves[3][3] = new EventRoom("It's a doge!!!", new MichaelPacManGameMain());
 		caves[0][5] = new EventRoom("It's your girlfriend's mother!!!", new AnnaFrontend());
 		caves[0][9] = new EventRoom("It's your girlfriend's father!!!", new HansFrontEnd());
 		caves[4][9] = new EventRoom("It's your gf", new HansEndGameEvent()); 

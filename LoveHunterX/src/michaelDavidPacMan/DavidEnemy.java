@@ -2,10 +2,10 @@ package michaelDavidPacMan;
 
 
 public class DavidEnemy {
-	public static int currentEnemyOneRoomRow = MichaelDavidPacManGameMain.cells.length-1;
-	public static int currentEnemyTwoRoomRow = MichaelDavidPacManGameMain.cells.length-2;
-	public static int currentEnemyOneRoomCol = MichaelDavidPacManGameMain.cells[0].length-1;
-	public static int currentEnemyTwoRoomCol = MichaelDavidPacManGameMain.cells[0].length-2;
+	public static int currentEnemyOneRoomRow = MichaelPacManGameMain.cells.length-1;
+	public static int currentEnemyTwoRoomRow = MichaelPacManGameMain.cells.length-2;
+	public static int currentEnemyOneRoomCol = MichaelPacManGameMain.cells[0].length-1;
+	public static int currentEnemyTwoRoomCol = MichaelPacManGameMain.cells[0].length-2;
 	
 	public static void updateEnemyMovement(int enemyNum){
 		int randDirec = (int) ((Math.random() * 4) + 1);
@@ -28,7 +28,7 @@ public class DavidEnemy {
 					}
 				}
 				if(randDirec == 3){
-					if(currentEnemyOneRoomRow<MichaelDavidPacManGameMain.cells.length-1 && checkIfOneAccessible(1,0)){
+					if(currentEnemyOneRoomRow<MichaelPacManGameMain.cells.length-1 && checkIfOneAccessible(1,0)){
 						currentEnemyOneRoomRow++;
 					}
 					else{
@@ -36,7 +36,7 @@ public class DavidEnemy {
 					}
 				}
 				if(randDirec == 4){
-					if(currentEnemyOneRoomCol<MichaelDavidPacManGameMain.cells[0].length-1 && checkIfOneAccessible(0,1)){
+					if(currentEnemyOneRoomCol<MichaelPacManGameMain.cells[0].length-1 && checkIfOneAccessible(0,1)){
 						currentEnemyOneRoomCol++;
 					}
 					else{
@@ -62,7 +62,7 @@ public class DavidEnemy {
 					}
 				}
 				if(randDirec == 3){
-					if(currentEnemyTwoRoomRow<MichaelDavidPacManGameMain.cells.length-1 && checkIfTwoAccessible(1,0)){
+					if(currentEnemyTwoRoomRow<MichaelPacManGameMain.cells.length-1 && checkIfTwoAccessible(1,0)){
 						currentEnemyTwoRoomRow++;
 					}
 					else{
@@ -70,7 +70,7 @@ public class DavidEnemy {
 					}
 				}
 				if(randDirec == 4){
-					if(currentEnemyTwoRoomCol<MichaelDavidPacManGameMain.cells[0].length-1 && checkIfTwoAccessible(0,1)){
+					if(currentEnemyTwoRoomCol<MichaelPacManGameMain.cells[0].length-1 && checkIfTwoAccessible(0,1)){
 						currentEnemyTwoRoomCol++;
 					}
 					else{
@@ -80,7 +80,7 @@ public class DavidEnemy {
 		}	
  	}
 	public static boolean checkIfOneAccessible(int eRow, int eCol){
-		if(MichaelDavidPacManGameMain.cells[currentEnemyOneRoomRow+eRow][currentEnemyOneRoomCol+eCol].getAccessible() 
+		if(MichaelPacManGameMain.cells[currentEnemyOneRoomRow+eRow][currentEnemyOneRoomCol+eCol].getAccessible() 
 				&& !(currentEnemyOneRoomRow+eRow == currentEnemyTwoRoomRow) 
 				&& !(currentEnemyOneRoomCol+eCol == currentEnemyTwoRoomCol)){
 			return true;
@@ -88,7 +88,7 @@ public class DavidEnemy {
 		else return false;
 	}
 	public static boolean checkIfTwoAccessible(int eRow, int eCol){
-		if(MichaelDavidPacManGameMain.cells[currentEnemyTwoRoomRow+eRow][currentEnemyTwoRoomCol+eCol].getAccessible() 
+		if(MichaelPacManGameMain.cells[currentEnemyTwoRoomRow+eRow][currentEnemyTwoRoomCol+eCol].getAccessible() 
 				&& !(currentEnemyTwoRoomRow+eRow == currentEnemyOneRoomRow) 
 				&& !(currentEnemyTwoRoomCol+eCol == currentEnemyOneRoomCol)){
 			return true;

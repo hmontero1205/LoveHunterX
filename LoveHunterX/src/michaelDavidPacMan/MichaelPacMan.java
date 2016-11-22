@@ -27,14 +27,14 @@ public class MichaelPacMan {
 				}
 				break;
 			case "s": //movedown
-				if(MichaelCellRoom.currentRoomRow<MichaelDavidPacManGameMain.cells.length-1 && checkIfAccessible(1,0)){
+				if(MichaelCellRoom.currentRoomRow<MichaelPacManGameMain.cells.length-1 && checkIfAccessible(1,0)){
 					MichaelCellRoom.currentRoomRow++;
 				}else{
 					System.out.println("Can't move out of the maze :)");
 				}
 				break;
 			case "d": //moveright
-				if(MichaelCellRoom.currentRoomCol<MichaelDavidPacManGameMain.cells[0].length-1 && checkIfAccessible(0,1)){
+				if(MichaelCellRoom.currentRoomCol<MichaelPacManGameMain.cells[0].length-1 && checkIfAccessible(0,1)){
 					MichaelCellRoom.currentRoomCol++;
 				}else{
 					System.out.println("Can't move out of the maze :)");
@@ -59,12 +59,12 @@ public class MichaelPacMan {
 	}
 
 	public static boolean checkIfAccessible(int cRow, int cCol){
-		return MichaelDavidPacManGameMain.cells[MichaelCellRoom.currentRoomRow+cRow][MichaelCellRoom.currentRoomCol+cCol].getAccessible();
+		return MichaelPacManGameMain.cells[MichaelCellRoom.currentRoomRow+cRow][MichaelCellRoom.currentRoomCol+cCol].getAccessible();
 	}
 
 	public static void getBoneFrags(){
-		if(MichaelDavidPacManGameMain.cells[MichaelCellRoom.currentRoomRow][MichaelCellRoom.currentRoomCol].getBFrag()){
-			MichaelDavidPacManGameMain.cells[MichaelCellRoom.currentRoomRow][MichaelCellRoom.currentRoomCol].changeBoneStatus();
+		if(MichaelPacManGameMain.cells[MichaelCellRoom.currentRoomRow][MichaelCellRoom.currentRoomCol].getBFrag()){
+			MichaelPacManGameMain.cells[MichaelCellRoom.currentRoomRow][MichaelCellRoom.currentRoomCol].changeBoneStatus();
 			numCollected++;
 		}
 	}

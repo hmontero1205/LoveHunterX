@@ -5,7 +5,7 @@ import michaelDavidPacMan.MichaelCellRoom;
 import hansExplorerMain.Event;
 import hansExplorerMain.HansCaveExplorer;
 
-public class MichaelDavidPacManGameMain implements Event {
+public class MichaelPacManGameMain implements Event {
 
 	//things we need:
 	//	a default grid - I got this, any questions feel free to email me. mli8855@bths.edu
