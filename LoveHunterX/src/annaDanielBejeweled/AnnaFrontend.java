@@ -72,39 +72,7 @@ public class AnnaFrontend implements Event {
 			System.out.println();
 		}
 	}
-	public static String[][] swap(String[][] grid,int r, int c,String d){
 
-		if(d.equals("w")){
-			String temp = grid[r-1][c] ;
-			grid[r-1][c] = grid[r][c];
-			grid[r][c] = temp;
-		}else{
-			if(d.equals("a")){
-				String temp = grid[r][c-1];
-				grid[r][c-1] = grid[r][c];
-				grid[r][c] = temp;
-			}else{
-			
-				if(d.equals("s")){
-					String temp =grid[r+1][c];
-					grid[r+1][c] = grid[r][c];
-					grid[r][c] = temp;
-				}else{
-					if(d.equals("d")){
-						String temp = grid[r][c+1];
-						grid[r][c+1] = grid[r][c];
-						grid[r][c] = temp;
-					}else{
-						System.out.println("Direction invalid. Start again.");
-						ask();
-					}
-				}
-			}
-		}
-
-		return grid;
-
-	}
 	public static boolean isValid(String input){
 		try{
 			int num = Integer.parseInt(input);
@@ -160,7 +128,7 @@ public class AnnaFrontend implements Event {
 					System.out.println("Pick a direction that works.");
 					dir = in.nextLine();
 				}
-				swap(arr2d, row,col,dir);
+				DanielBackend.swap(arr2d, row,col,dir);
 				for(int i = 0;i<arr2d.length;i++){
 					while(DanielBackend.checkRow(arr2d[i])[0]==1||DanielBackend.checkCol(arr2d,i)[0]==1){
 						if(DanielBackend.checkRow(arr2d[i])[0] == 1 ){
@@ -180,7 +148,7 @@ public class AnnaFrontend implements Event {
 				}
 				printPic(arr2d);
 				System.out.println("Score: "+a);
-				if(a>4){
+				if(a>=5){
 					endGame();
 				}
 			}

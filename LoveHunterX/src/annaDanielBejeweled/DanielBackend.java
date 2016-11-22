@@ -1,6 +1,39 @@
 package annaDanielBejeweled;
  
 public class DanielBackend {
+	public static String[][] swap(String[][] grid,int r, int c,String d){
+
+		if(d.equals("w")){
+			String temp = grid[r-1][c] ;
+			grid[r-1][c] = grid[r][c];
+			grid[r][c] = temp;
+		}else{
+			if(d.equals("a")){
+				String temp = grid[r][c-1];
+				grid[r][c-1] = grid[r][c];
+				grid[r][c] = temp;
+			}else{
+			
+				if(d.equals("s")){
+					String temp =grid[r+1][c];
+					grid[r+1][c] = grid[r][c];
+					grid[r][c] = temp;
+				}else{
+					if(d.equals("d")){
+						String temp = grid[r][c+1];
+						grid[r][c+1] = grid[r][c];
+						grid[r][c] = temp;
+					}else{
+						System.out.println("Direction invalid. Start again.");
+						AnnaFrontend.ask();
+					}
+				}
+			}
+		}
+
+		return grid;
+
+	}
 	public static int[] checkRow(String[] row){
 		int[] results = new int[3];
 		int longest = 1;
@@ -96,7 +129,7 @@ public class DanielBackend {
 		for(int row = grid.length-1; row > 0; row--){
 			for(int col = 0; col < grid[0].length-1; col++){
 				if(grid[row][col].equals("   ")){
-					AnnaFrontend.swap(grid,row,col,"w");
+					swap(grid,row,col,"w");
 				}
 
 			}
