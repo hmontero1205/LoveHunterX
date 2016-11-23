@@ -83,6 +83,9 @@ public class HansCaveExplorer {
 		caves[0][1].updateContents("o");
 		caves[3][3].updateContents("D");
 		caves[1][1].updateContents("o");
+		caves[0][4].updateContents("O");
+		caves[0][3].updateContents("|");
+		caves[1][3].updateContents("|");
 		caves[0][6].setConnection(HansCaveRoom.SOUTH, caves[1][6], new HansDoor("bedroom tile",true));
 		caves[0][6].setConnection(HansCaveRoom.EAST, caves[0][7], new HansDoor("bedroom tile",true));
 		caves[1][6].setConnection(HansCaveRoom.SOUTH, caves[2][6], new HansDoor("bedroom door",false));
