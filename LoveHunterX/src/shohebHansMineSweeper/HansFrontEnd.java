@@ -46,27 +46,27 @@ public class HansFrontEnd implements Event{
 				else{
 					if(col < 10){
 						if(!ShohebBackEnd.isNotHidden[row][col]){
-							System.out.print(" _ ");
+							System.out.print("[ ]");
 						}
 						else{
 							if(ShohebBackEnd.board[row][col] == 1){
-								System.out.print(" " + ShohebBackEnd.count[row][col]);
+								System.out.print("[" + ShohebBackEnd.count[row][col]+"]");
 							}
 							else{
-								System.out.print(" X");
+								System.out.print("[X]");
 							}
 						}
 					}
 					else{
 						if(!ShohebBackEnd.isNotHidden[row][col]){
-							System.out.print("  _ ");
+							System.out.print(" [ ]");
 						}
 						else{
 							if(ShohebBackEnd.board[row][col] == 1){
-								System.out.print("  " + ShohebBackEnd.count[row][col]);
+								System.out.print(" [" + ShohebBackEnd.count[row][col]+"]");
 							}
 							else{
-								System.out.print(" X ");
+								System.out.print(" [X]");
 							}
 						}
 					}
@@ -119,5 +119,13 @@ public class HansFrontEnd implements Event{
 			return false;
 		}
 		return true;
+	}
+	
+	public static void revealBoard(){
+		for(int i=0; i<ShohebBackEnd.isNotHidden.length; i++){
+			for(int j=0; j<ShohebBackEnd.isNotHidden[i].length; j++){
+				ShohebBackEnd.isNotHidden[i][j] = true;
+			} 
+		}
 	}
 }
