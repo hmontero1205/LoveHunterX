@@ -62,7 +62,7 @@ public class DavidEnemy {
 	}
 
 	public static boolean checkLoseCondition(){
-		//mike - help here.
+		//mike - help here. ok.
 		if (Math.abs(MichaelCellRoom.currentRoomRow-currentEnemyOneRoomRow)<2 && Math.abs(MichaelCellRoom.currentRoomCol-currentEnemyOneRoomCol)<2 ){
 			//print last time before losing.
 			MichaelPacManGameMain.printMaze();
