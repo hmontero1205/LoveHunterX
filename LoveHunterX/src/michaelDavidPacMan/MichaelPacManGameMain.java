@@ -15,7 +15,7 @@ public class MichaelPacManGameMain implements Event {
 
 	public static MichaelCellRoom cells[][];
 	public static Scanner in;
-	//public static boolean inPacGame=true;	
+	public static boolean inPacGame=true;	
 
 	public void play() {
 		System.out.println("You encounter an angry looking doge. There are bone fragments scattered on the ground.\n"
@@ -27,14 +27,13 @@ public class MichaelPacManGameMain implements Event {
 				cells[r][c]= new MichaelCellRoom();
 			}
 		}
-		while(MichaelPacMan.getNumCollected()<15){
+		while(inPacGame){
 			printMaze();
 			String input = in.nextLine();
 			MichaelPacMan.interpretInput(input);
 			MichaelPacMan.getBoneFrags();
 			DavidEnemy.updateEnemyMovement();
 			checkCondition();
-			
 		}
 	}
 
@@ -42,12 +41,15 @@ public class MichaelPacManGameMain implements Event {
 		if(DavidEnemy.checkLoseCondition()){
 			System.out.println("You lose, the vicious doge got to you before you could get all the bone fragments");
 			printMaze();
+			inPacGame=false;
 			HansCaveExplorer.setGameOver(true);
 		}
 		if(MichaelPacMan.getNumCollected()>=15){
 			System.out.println("You fed the doge and now doge respects you. With that, doge gives you the key to the house.");
 			printMaze();
+			inPacGame=false;
 			HansCaveExplorer.caves[4][1].getDoor(1).setLocked(false);
+			System.out.println("The door to the house has been unlocked.");
 		}
 	}
 
@@ -110,7 +112,7 @@ public class MichaelPacManGameMain implements Event {
 		for (int col = 0; col < grid[0].length; col++){
 			System.out.print(" ¯");
 		}
-		System.out.println("\n You have collected " + MichaelPacMan.getNumCollected() + " bone fragments.");
+		System.out.println("\nYou have collected " + MichaelPacMan.getNumCollected() + " bone fragments. \n");
 	}
 
 }
