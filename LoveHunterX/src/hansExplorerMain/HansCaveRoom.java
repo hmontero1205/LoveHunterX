@@ -116,9 +116,10 @@ public class HansCaveRoom {
 	}
 
 	public void interpretInput(String input) {
+		input = input.toLowerCase();
 		while(!isValid(input)){
 			System.out.println("You can only enter 'w', 'a', 's', 'd'");
-			input = HansCaveExplorer.in.nextLine();
+			input = HansCaveExplorer.in.nextLine().toLowerCase();
 		}
 		String[] keys = {"w","d","s","a"};
 		int indexFound = -1;
@@ -138,7 +139,10 @@ public class HansCaveRoom {
 			HansCaveExplorer.inventory.updateMap();
 		}
 		else{
-			System.out.println("This door is locked! You need the key man!!");
+			if(borderingRooms[direction]!=null && doors[direction].isLocked())
+				System.out.println("This door is locked! You need the key man!!");
+			else
+				System.out.println("You can't go there.");
 		}
 	}
 	public static boolean isValid(String input){

@@ -128,6 +128,10 @@ public class AnnaFrontend implements Event {
 					System.out.println("Pick a direction that works.");
 					dir = in.nextLine();
 				}
+				while(!(dir.equals("w") || dir.equals("a")||dir.equals("s")||dir.equals("d"))){
+					System.out.println("Direction invalid. Enter a valid direction PLS.");
+					dir= in.nextLine();
+				}
 				DanielBackend.swap(arr2d, row,col,dir);
 				for(int i = 0;i<arr2d.length;i++){
 					while(DanielBackend.checkRow(arr2d[i])[0]==1||DanielBackend.checkCol(arr2d,i)[0]==1){

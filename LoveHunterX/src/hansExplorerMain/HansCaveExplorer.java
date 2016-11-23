@@ -28,7 +28,7 @@ public class HansCaveExplorer {
 		caves[0][9] = new EventRoom("It's your girlfriend's father!!!", new HansFrontEnd());
 		caves[4][9] = new EventRoom("It's your gf!", new HansEndGameEvent()); 
 		caves[4][0] = new EventRoom("It's your gf's lil bro!", new HansConnectFourFront());
-		currentRoom = caves[3][5];
+		currentRoom = caves[4][7];
 		currentRoom.enter();
 		caves[4][7].setConnection(HansCaveRoom.WEST, caves[4][6], new HansDoor("gravel path",true));
 		caves[4][6].setConnection(HansCaveRoom.NORTH, caves[3][6], new HansDoor("gravel path",true));

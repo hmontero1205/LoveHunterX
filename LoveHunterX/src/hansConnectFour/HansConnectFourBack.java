@@ -15,11 +15,11 @@ public class HansConnectFourBack {
 			HansConnectFourFront.setUserWon(true);
 		}
 		else{
-			while(!isValid(userIn,arr[0].length-1)){
-				System.out.println("chill with that man enter a valid input");
-				userIn = HansConnectFourFront.in.nextLine();
-			}
 			int columnChosen = indexOf(arr[0],userIn);
+			while(!isValid(Integer.toString(columnChosen),arr[0].length-1)){
+				System.out.println("chill with that man enter a valid input");
+				columnChosen = indexOf(arr[0],HansConnectFourFront.in.nextLine());
+			}
 			madeChange = false;
 			for(int i=arr.length-1;i>0;i--){
 				if(arr[i][columnChosen].equals(" ")){

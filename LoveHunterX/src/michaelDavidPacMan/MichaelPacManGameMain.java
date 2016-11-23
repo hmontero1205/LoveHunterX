@@ -19,7 +19,7 @@ public class MichaelPacManGameMain implements Event {
 
 	public void play() {
 		System.out.println("You encounter an angry looking doge. There are bone fragments scattered on the ground.\n"
-				+ "Maybe if you give doge enough bone fragments, he'll come thru with the key xD");
+				+ "Maybe if you give doge enough bone fragments, he'll come thru with the key");
 		in = new Scanner(System.in);
 		cells = new MichaelCellRoom[12][12];
 		for(int r=0; r<cells.length;r++){

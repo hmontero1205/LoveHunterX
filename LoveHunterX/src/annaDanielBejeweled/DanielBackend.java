@@ -2,7 +2,6 @@ package annaDanielBejeweled;
  
 public class DanielBackend {
 	public static String[][] swap(String[][] grid,int r, int c,String d){
-
 		if(d.equals("w")){
 			String temp = grid[r-1][c] ;
 			grid[r-1][c] = grid[r][c];
@@ -23,9 +22,6 @@ public class DanielBackend {
 						String temp = grid[r][c+1];
 						grid[r][c+1] = grid[r][c];
 						grid[r][c] = temp;
-					}else{
-						System.out.println("Direction invalid. Start again.");
-						AnnaFrontend.ask();
 					}
 				}
 			}
