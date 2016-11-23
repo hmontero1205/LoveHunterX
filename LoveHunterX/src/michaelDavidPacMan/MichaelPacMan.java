@@ -7,6 +7,7 @@ public class MichaelPacMan {
 	public static int getNumCollected(){
 		return numCollected;
 	}
+	
 	public static void interpretInput(String input) {
 		if(!(isValid(input))){
 			System.out.println("Yo. w a s d only please");
@@ -41,8 +42,8 @@ public class MichaelPacMan {
 				}
 				break;
 			case "cheat":
-				System.out.println("Oh look. You happen to have 10 bones in your pocket. How... intriguing.");
-				numCollected=11;
+				System.out.println("Oh look. You happen to have 15 bones in your pocket. How... intriguing.");
+				numCollected=16;
 				break;
 			}
 		}

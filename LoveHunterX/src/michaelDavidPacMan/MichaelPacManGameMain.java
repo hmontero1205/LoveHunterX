@@ -8,9 +8,9 @@ import hansExplorerMain.HansCaveExplorer;
 public class MichaelPacManGameMain implements Event {
 
 	//things we need:
-	//	a default grid - I got this, any questions feel free to email me. mli8855@bths.edu
+	//	a default grid - I got this, any questions feel free to email me.
 	//	a pacman - This too.
-	//	dogs
+	//	dogs - 
 	//	pieces of bones - can be done /w a counter...
 
 	public static MichaelCellRoom cells[][];
@@ -21,49 +21,48 @@ public class MichaelPacManGameMain implements Event {
 		System.out.println("You encounter an angry looking doge. There are bone fragments scattered on the ground.\n"
 				+ "Maybe if you give doge enough bone fragments, he'll come thru with the key xD");
 		in = new Scanner(System.in);
-		cells = new MichaelCellRoom[10][10];
+		cells = new MichaelCellRoom[12][12];
 		for(int r=0; r<cells.length;r++){
 			for(int c=0;c<cells[r].length;c++){
 				cells[r][c]= new MichaelCellRoom();
-				//				if(cells[r][c].getAccessible()){
-				//					System.out.print("T");
-				//				}else{
-				//					System.out.print("F");
-				//				}
 			}
-			//System.out.println();
 		}
 		while(inPacGame){
 			printMaze();
 			String input = in.nextLine();
 			MichaelPacMan.interpretInput(input);
 			MichaelPacMan.getBoneFrags();
-			//David's code
-			DavidEnemy.updateEnemyMovement(1);
-			DavidEnemy.updateEnemyMovement(2);
-			if(DavidEnemy.checkLoseCondition(DavidEnemy.currentEnemyOneRoomRow, DavidEnemy.currentEnemyOneRoomCol)){
-				System.out.println("You lose, the vicious doge got to you before you could get all the bone fragments");
-				inPacGame = false;
-				HansCaveExplorer.setGameOver(true);
-			}
-			if(DavidEnemy.checkLoseCondition(DavidEnemy.currentEnemyTwoRoomRow , DavidEnemy.currentEnemyTwoRoomCol)){
-				System.out.println("You lose, the vicious doge got to you before you could get all the bone fragments");
-				inPacGame = false;
-				HansCaveExplorer.setGameOver(true);
-			}
-			//David's code ends here.
-			if(MichaelPacMan.getNumCollected()>=10){
-				System.out.println("You fed the doge and now doge respects you. With that, doge gives you the key to the house.");
-				inPacGame=false;
-				HansCaveExplorer.caves[4][1].getDoor(1).setLocked(false);
-			}
+			DavidEnemy.updateEnemyMovement();
+			checkCondition();
 		}
+	}
+
+	public static void checkCondition(){
+		if(DavidEnemy.checkLoseCondition()){
+			System.out.println("You lose, the vicious doge got to you before you could get all the bone fragments");
+			inPacGame = false;
+			HansCaveExplorer.setGameOver(true);
+		}
+		if(MichaelPacMan.getNumCollected()>=15){
+			System.out.println("You fed the doge and now doge respects you. With that, doge gives you the key to the house.");
+			inPacGame=false;
+			HansCaveExplorer.caves[4][1].getDoor(1).setLocked(false);
+		}
+	}
+
+	public static void setUpStarters(){
+		//starting cell and dog cell must be accessible and not have bone frags.
+		cells[0][0].accessible = true;
+		cells[0][0].boneFrag = false;
+		cells[cells.length/3][cells[0].length/3].accessible = true;
+		cells[cells.length/3][cells[0].length/3].boneFrag = false;
 	}
 
 	public static void printMaze(){
 		String[][] grid = new String[cells.length][cells[0].length];
 		//X = not accessible
 		//O = bone frag here
+		//% = dog
 		for (int row =0; row<grid.length; row++){
 			for(int col = 0; col < grid[row].length; col ++){
 				grid[row][col]=" ";
@@ -73,18 +72,11 @@ public class MichaelPacManGameMain implements Event {
 					if(cells[row][col].getBFrag()){
 						grid[row][col]="O";
 					}
-					//David's code
 					if(row == DavidEnemy.currentEnemyOneRoomRow && col == DavidEnemy.currentEnemyOneRoomCol){
-						System.out.println("The dog1 row is " + DavidEnemy.getDog1Row());
-						System.out.println("The dog1 col is " + DavidEnemy.getDog1Col());
+						//System.out.println("The dog1 row is " + DavidEnemy.getDog1Row());
+						//System.out.println("The dog1 col is " + DavidEnemy.getDog1Col());
 						grid[row][col] = "%";
 					}
-					if(row == DavidEnemy.currentEnemyTwoRoomRow && col == DavidEnemy.currentEnemyTwoRoomCol){
-						System.out.println("The dog2 row is " + DavidEnemy.getDog2Row());
-						System.out.println("The dog2 col is " + DavidEnemy.getDog2Col());
-						grid[row][col] = "%";
-					}
-					//David's code end here.
 				}
 				//locate pacman
 				if(row == MichaelCellRoom.currentRoomRow && col == MichaelCellRoom.currentRoomCol){
@@ -92,8 +84,8 @@ public class MichaelPacManGameMain implements Event {
 				}
 			}
 		}
-		//starting cell must be accessible.
-		cells[0][0].accessible = true;
+		//starting cell and dog cell must be accessible.
+		setUpStarters();
 
 		//upper border
 		for (int col = 0; col < grid[0].length; col++){
@@ -101,6 +93,7 @@ public class MichaelPacManGameMain implements Event {
 		}
 		System.out.println();
 
+		//inside borders
 		for (int row = 0; row < grid.length; row++){
 			for(int col = 0; col < grid[row].length; col++){
 				System.out.print("|");
